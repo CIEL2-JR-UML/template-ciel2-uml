@@ -64,3 +64,63 @@ Une association relie deux classes qui communiquent.
 ### D. La Généralisation / Héritage (Flèche triangle vide `<|--`)
 - Permet de modéliser le polymorphisme et la factorisation de code.
 - La sous-classe hérite des attributs et méthodes de la classe mère, et peut redéfinir (*override*) les méthodes virtuelles.
+
+---
+
+## 4. Exemple Concret BTS CIEL : Passerelle de Mesure Connectée
+
+Voici la modélisation complète d'une passerelle collectant des capteurs polymorphiques et pilotant un écran LCD :
+
+```plantuml
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Capteur {
+    # identifiant : int
+    # label : string
+    + Capteur(id: int, nom: string)
+    + virtual ~Capteur()
+    + {abstract} acquerir() : float
+    + getLabel() : string
+}
+
+class CapteurTemperature {
+    - coefficientCalibration : float
+    + CapteurTemperature(id: int, nom: string, coeff: float)
+    + acquerir() : float
+}
+
+class CapteurPression {
+    - altitudeLocale : int
+    + CapteurPression(id: int, nom: string, alt: int)
+    + acquerir() : float
+}
+
+class AfficheurLCD {
+    - i2cAdresse : uint8_t
+    + AfficheurLCD(adresse: uint8_t)
+    + ecrireLigne(numLigne: int, texte: string) : void
+}
+
+class Passerelle {
+    - adresseIP : string
+    - periodeMesureSec : int
+    + Passerelle(ip: string)
+    + ajouterCapteur(c: Capteur*) : void
+    + lancerCycleAcquisition() : void
+}
+
+Capteur <|-- CapteurTemperature
+Capteur <|-- CapteurPression
+Passerelle o-- "0..*" Capteur : agrege
+Passerelle *-- "1" AfficheurLCD : compose
+
+@enduml
+```
+
+---
+
+## 5. Règles d'Or pour l'Examen BTS CIEL
+1. **Toujours préciser les multiplicités** aux deux extrémités des associations (ex: `1` et `0..*`).
+2. **Encapsulation stricte :** Les attributs doivent toujours être `-` (privés) ou `#` (protégés), jamais `+` (publics).
+3. **Penser polymorphisme :** Dès que plusieurs capteurs ou périphériques partagent des comportements, créer une classe abstraite avec une méthode virtuelle pure (`= 0` en C++).

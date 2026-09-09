@@ -64,3 +64,85 @@ class CapteurHumidite:
     def lire_humidite(self) -> float:
         return 65.4
 ```
+
+---
+
+## 3. Traduction des Relations entre Classes
+
+### A. Multiplicité 1 vers 0..* (Collection)
+Si une `Passerelle` gère plusieurs `Capteur` :
+
+#### En C++ (STL `std::vector`) :
+```cpp
+#include <vector>
+#include "Capteur.hpp"
+
+class Passerelle {
+private:
+    std::vector<Capteur*> m_capteurs; // Agrégation : pointeurs externes
+
+public:
+    void ajouterCapteur(Capteur* c) {
+        if (c != nullptr) {
+            m_capteurs.push_back(c);
+        }
+    }
+};
+```
+
+#### En Python :
+```python
+from typing import List
+from capteur import Capteur
+
+class Passerelle:
+    def __init__(self):
+        self._capteurs: List[Capteur] = []
+
+    def ajouter_capteur(self, c: Capteur) -> None:
+        if c is not None:
+            self._capteurs.append(c)
+```
+
+---
+
+### B. Composition vs Agrégation
+
+| Relation | C++ | Python |
+| :--- | :--- | :--- |
+| **Composition** (`A *-- B`) | L'objet B est alloué en membre direct (`B m_b;`) ou via `std::unique_ptr<B>`. Il naît et meurt avec A. | B est instancié à l'intérieur du constructeur de A : `self._b = B()`. |
+| **Agrégation** (`A o-- B`) | Pointeur non possédé (`B* m_b;` ou `std::shared_ptr<B>`). L'objet B est injecté depuis l'extérieur. | B est reçu en paramètre : `def set_b(self, b: B): self._b = b`. |
+
+---
+
+### C. Héritage et Polymorphisme
+
+#### En C++ (Classes Abstraites) :
+```cpp
+class Capteur {
+public:
+    virtual ~Capteur() = default;
+    virtual float acquerir() = 0; // Méthode virtuelle pure
+};
+
+class CapteurTemperature : public Capteur {
+public:
+    float acquerir() override {
+        return 22.5f;
+    }
+};
+```
+
+#### En Python (Module `abc`) :
+```python
+from abc import ABC, abstractmethod
+
+class Capteur(ABC):
+    @abstractmethod
+    def acquerir(self) -> float:
+        pass
+
+class CapteurTemperature(Capteur):
+    def acquerir(self) -> float:
+        return 22.5
+```

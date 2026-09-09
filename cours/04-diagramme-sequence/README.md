@@ -23,3 +23,54 @@ En BTS CIEL, il est indispensable pour modéliser :
 - `opt` : **Optionnel :** Exécute un bloc si la condition est vraie, rien sinon (`if` sans `else`).
 - `loop` : **Boucle :** Répète le bloc tant qu'une condition est vérifiée (`for`, `while`).
 - `par` : **Parallélisme :** Exécute plusieurs branches simultanément (threads, multitâche).
+
+---
+
+## 3. Exemple Concret BTS CIEL : Publication MQTT Sécurisée
+
+### Scénario :
+Une sonde connectée acquiert la température, vérifie si elle franchit un seuil critique, et publie la donnée sur un broker MQTT distant.
+
+```plantuml
+@startuml
+autonumber
+skinparam responseMessageBelowArrow true
+
+actor "Horloge Interne" as Timer
+participant "Gestionnaire : MainController" as Ctrl
+participant "Sonde : CapteurTemp" as Sonde
+participant "ClientMQTT : MosquittoWrapper" as MQTT
+boundary "Broker Distant" as Broker
+
+Timer -> Ctrl : signalTimeout10s()
+activate Ctrl
+
+Ctrl -> Sonde : acquerirTemperature()
+activate Sonde
+Sonde --> Ctrl : float temp (ex: 28.5)
+deactivate Sonde
+
+Ctrl -> Ctrl : verifierSeuil(temp)
+
+alt temp >= seuilAlerte (ex: 25.0 °C)
+    Ctrl -> MQTT : publier("alerte/temperature", "CRITIQUE: 28.5")
+    activate MQTT
+    MQTT ->> Broker : MQTT PUBLISH (QoS=1, Topic="alerte/temperature")
+    activate Broker
+    Broker -->> MQTT : PUBACK (Packet ID: 104)
+    deactivate Broker
+    MQTT --> Ctrl : StatutEnvoi (OK)
+    deactivate MQTT
+end
+
+Ctrl -> Ctrl : mettreEnSommeil()
+deactivate Ctrl
+@enduml
+```
+
+---
+
+## 4. Conseils pour la Rédaction en BTS CIEL
+- **Nommez précisément les instances :** `nomInstance : NomClasse` (ex: `sondeTemp : Capteur`).
+- **N'oubliez pas les retours :** Les flèches pointillées `-->` matérialisent le résultat renvoyé à l'appelant.
+- **Distinguez synchrone et asynchrone :** Flèche pleine `->` pour un appel de fonction bloquant, flèche ouverte `->>` pour un paquet réseau (UDP/MQTT).
