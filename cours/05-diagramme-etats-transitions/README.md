@@ -12,14 +12,7 @@ Le diagramme d'états-transitions modélise le cycle de vie complet d'un objet s
 
 ## 2. Définitions & Notations
 
-```mermaid
-stateDiagram-v2
-    [*] --> Initialisation : Alimentation ON
-    Initialisation --> AttenteConnexion : Carte réseau prête
-    AttenteConnexion --> Connecte : [IP obtenue via DHCP] / allumerLEDVerte()
-    Connecte --> AttenteConnexion : Perte de lien / allumerLEDRouge()
-    Connecte --> [*] : Commande extinction
-```
+![Diagramme d'États-Transitions](../../ressources/images/automate-fsm.svg)
 
 ### Syntaxe d'une transition :
 $$\text{Événement} \; [\text{Garde}] \; / \; \text{Action}$$

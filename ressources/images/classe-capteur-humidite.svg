@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 200" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <filter id="sh6" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sh6)">
+    <rect x="30" y="20" width="390" height="155" rx="8" fill="#f8fafc" stroke="#1e3a8a" stroke-width="2"/>
+    
+    <!-- Title compartment -->
+    <rect x="30" y="20" width="390" height="35" rx="8" fill="#1e3a8a" />
+    <text x="225" y="43" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">CapteurHumidite</text>
+
+    <!-- Attributes compartment -->
+    <text x="45" y="75" font-size="12" font-family="Consolas, monospace" fill="#0f172a">- m_id : int</text>
+    <text x="45" y="93" font-size="12" font-family="Consolas, monospace" fill="#0f172a">- m_seuilMax : float</text>
+    <line x1="30" y1="102" x2="420" y2="102" stroke="#cbd5e1" stroke-width="1.5"/>
+
+    <!-- Operations compartment -->
+    <text x="45" y="122" font-size="12" font-family="Consolas, monospace" fill="#0f172a">+ CapteurHumidite(id: int, seuil: float)</text>
+    <text x="45" y="140" font-size="12" font-family="Consolas, monospace" fill="#0f172a">+ getSeuil() : float</text>
+    <text x="45" y="158" font-size="12" font-family="Consolas, monospace" fill="#0f172a">+ lireHumidite() : float</text>
+  </g>
+</svg>

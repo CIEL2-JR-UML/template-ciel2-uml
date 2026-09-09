@@ -6,16 +6,7 @@ Ce mémento rassemble les règles fondamentales, les symboles normalisés et les
 
 ## 1. Vue d'ensemble des 5 Diagrammes Clés en BTS CIEL
 
-```mermaid
-graph TD
-    A["Besoins Clients et Cahier des charges"] --> B["Diagramme des Cas d'Utilisation<br>(Qui fait quoi ?)"]
-    B --> C["Diagramme de Classes<br>(Structure du code)"]
-    B --> D["Diagramme de Séquence<br>(Interactions dans le temps)"]
-    C --> E["Diagramme d'États-Transitions<br>(Automate réactif)"]
-    C --> F["Diagramme d'Activité<br>(Algorithme et Workflow)"]
-    C --> G["Code C++ / Qt / Python"]
-    E --> G
-```
+![Vue d'ensemble UML](images/vue-ensemble-uml.svg)
 
 ---
 

@@ -52,31 +52,7 @@ graph LR
 
 ## 4. Exemple Concret : Station Météo Communicante (BTS CIEL)
 
-```mermaid
-flowchart LR
-    subgraph Station["Système : Station Météo Connectée"]
-        UC1(["Consulter les températures en direct"])
-        UC2(["Paramétrer le seuil d'alerte"])
-        UC3(["S'authentifier"])
-        UC4(["Publier les mesures vers le Cloud"])
-        UC5(["Filtrer l'historique par date"])
-    end
-
-    Tech["Technicien de Maintenance"]
-    User["Utilisateur Final"]
-    Broker["Serveur MQTT Cloud"]
-    RTC["Horloge Interne RTC"]
-
-    User --> UC1
-    Tech --> UC2
-    Tech --|> User
-    
-    UC2 -.->|"<<include>>"| UC3
-    UC5 -.->|"<<extend>>"| UC1
-    
-    RTC --> UC4
-    UC4 --> Broker
-```
+![Diagramme des Cas d'Utilisation - Station Météo](../../ressources/images/usecase-station-meteo.svg)
 
 ---
 

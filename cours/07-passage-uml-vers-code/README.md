@@ -11,17 +11,7 @@ Une modélisation UML n'a de valeur que si elle se traduit de manière rigoureus
 ## 2. Modélisation d'une Classe Simple
 
 ### Diagramme UML :
-```mermaid
-classDiagram
-    class CapteurHumidite {
-        - id : int
-        - seuilMax : float
-        + CapteurHumidite(id: int, seuil: float)
-        + getSeuil() : float
-        + setSeuil(valeur: float) : void
-        + lireHumidite() : float
-    }
-```
+![Diagramme de Classe](../../ressources/images/classe-capteur-humidite.svg)
 
 ### Implémentation C++ :
 ```cpp

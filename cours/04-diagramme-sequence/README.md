@@ -16,34 +16,7 @@ En BTS CIEL, il est indispensable pour modéliser :
 
 ## 2. Éléments Clés d'un Diagramme de Séquence
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Tech as Technicien
-    participant IHM as IHM Web
-    participant Srv as Serveur Backend
-    participant BDD as Base SQLite
-
-    Tech->>IHM: Cliquer sur "Générer Rapport"
-    activate IHM
-    IHM->>Srv: GET /api/rapport?format=json
-    activate Srv
-    Srv->>BDD: SELECT * FROM mesures WHERE date > J-7
-    activate BDD
-    BDD-->>Srv: Liste des enregistrements
-    deactivate BDD
-    
-    alt Mesures disponibles
-        Srv-->>IHM: 200 OK (données JSON)
-        IHM-->>Tech: Affichage du graphique interactif
-    else Aucune mesure trouvée
-        Srv-->>IHM: 404 Not Found
-        IHM-->>Tech: Message "Aucune donnée disponible"
-    end
-
-    deactivate Srv
-    deactivate IHM
-```
+![Diagramme de Séquence](../../ressources/images/sequence-supervision.svg)
 
 ### Fragments Combinés Majeurs :
 - `alt` : **Alternative :** Exécute un bloc parmi plusieurs selon une condition (`if ... else`).
