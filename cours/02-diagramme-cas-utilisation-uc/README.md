@@ -30,8 +30,8 @@ Représentés par des ellipses, ils décrivent une action complète produisant u
 
 ```mermaid
 graph LR
-    A([Consulter les mesures]) -->|<<include>>| B([S'authentifier])
-    A -.->|<<extend>>| C([Exporter au format CSV])
+    A(["Consulter les mesures"]) -->|"<<include>>"| B(["S'authentifier"])
+    A -.->|"<<extend>>"| C(["Exporter au format CSV"])
 ```
 
 ### A. L'Inclusion : `<<include>>`
@@ -54,25 +54,25 @@ graph LR
 
 ```mermaid
 flowchart LR
-    subgraph Système : Station Météo Connectée
-        UC1([Consulter les températures en direct])
-        UC2([Paramétrer le seuil d'alerte])
-        UC3([S'authentifier])
-        UC4([Publier les mesures vers le Cloud])
-        UC5([Filtrer l'historique par date])
+    subgraph Station["Système : Station Météo Connectée"]
+        UC1(["Consulter les températures en direct"])
+        UC2(["Paramétrer le seuil d'alerte"])
+        UC3(["S'authentifier"])
+        UC4(["Publier les mesures vers le Cloud"])
+        UC5(["Filtrer l'historique par date"])
     end
 
-    Tech[Technicien de Maintenance]
-    User[Utilisateur Final]
-    Broker[Serveur MQTT Cloud]
-    RTC[Horloge Interne RTC]
+    Tech["Technicien de Maintenance"]
+    User["Utilisateur Final"]
+    Broker["Serveur MQTT Cloud"]
+    RTC["Horloge Interne RTC"]
 
     User --> UC1
     Tech --> UC2
     Tech --|> User
     
-    UC2 -.->|<<include>>| UC3
-    UC5 -.->|<<extend>>| UC1
+    UC2 -.->|"<<include>>"| UC3
+    UC5 -.->|"<<extend>>"| UC1
     
     RTC --> UC4
     UC4 --> Broker

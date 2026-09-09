@@ -24,18 +24,34 @@ Le cycle en V est une référence majeure dans l'industrie (défense, automobile
 
 ```mermaid
 flowchart TD
-    A[Expression du besoin] --> B[Spécification fonctionnelle<br><b>Diagramme Use Case</b>]
-    B --> C[Architecture système & logicielle<br><b>Diagramme de Classes & Séquence</b>]
-    C --> D[Conception détaillée<br><b>Diagramme d'États & Activité</b>]
-    D --> E[Codage C++ / Python]
-    E --> F[Tests Unitaires]
-    F --> G[Tests d'Intégration]
-    G --> H[Validation & Recette Client]
-    
-    E -.-> F
-    D -.-> F
-    C -.-> G
-    B -.-> H
+    subgraph Conception["Branche Conception (Descendante)"]
+        A["1. Expression du besoin"]
+        B["2. Spécification fonctionnelle (Use Case)"]
+        C["3. Architecture logicielle (Classes)"]
+        D["4. Conception détaillée (États et Activité)"]
+    end
+
+    subgraph Realisation["Réalisation"]
+        E["5. Développement (C++ / Python)"]
+    end
+
+    subgraph Validation["Branche Validation (Montante)"]
+        F["6. Tests Unitaires"]
+        G["7. Tests d'Intégration"]
+        H["8. Recette et Validation Client"]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+
+    D -.->|"Vérifié par"| F
+    C -.->|"Validé par"| G
+    B -.->|"Recetté par"| H
 ```
 
 ### B. Les Démarches Agiles (Scrum, Kanban)
@@ -51,19 +67,19 @@ La norme UML 2.5 définit 14 types de diagrammes classés en deux catégories :
 
 ```mermaid
 graph TD
-    UML[UML 2.5 : 14 Diagrammes]
-    UML --> S[Diagrammes Statiques / Structurels]
-    UML --> D[Diagrammes Dynamiques / Comportementaux]
+    UML["UML 2.5 : 14 Diagrammes"]
+    UML --> S["Diagrammes Statiques / Structurels"]
+    UML --> D["Diagrammes Dynamiques / Comportementaux"]
     
-    S --> S1[<b>Diagramme de Classes</b> ★★★]
-    S --> S2[Diagramme d'Objets]
-    S --> S3[Diagramme de Composants]
-    S --> S4[Diagramme de Déploiement]
+    S --> S1["Diagramme de Classes (Incontournable)"]
+    S --> S2["Diagramme d'Objets"]
+    S --> S3["Diagramme de Composants"]
+    S --> S4["Diagramme de Déploiement"]
     
-    D --> D1[<b>Cas d'Utilisation - UC</b> ★★★]
-    D --> D2[<b>Diagramme de Séquence</b> ★★★]
-    D --> D3[<b>Diagramme d'États-Transitions</b> ★★★]
-    D --> D4[<b>Diagramme d'Activité</b> ★★]
+    D --> D1["Cas d'Utilisation - UC (Incontournable)"]
+    D --> D2["Diagramme de Séquence (Incontournable)"]
+    D --> D3["Diagramme d'États-Transitions (Incontournable)"]
+    D --> D4["Diagramme d'Activité"]
 ```
 
 ---

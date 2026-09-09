@@ -8,12 +8,12 @@ Ce mémento rassemble les règles fondamentales, les symboles normalisés et les
 
 ```mermaid
 graph TD
-    A[Besoins Clients & Cahier des charges] --> B[Diagramme des Cas d'Utilisation<br><i>Qui fait quoi avec le système ?</i>]
-    B --> C[Diagramme de Classes<br><i>Comment est structuré le code ?</i>]
-    B --> D[Diagramme de Séquence<br><i>Comment communiquent les objets dans le temps ?</i>]
-    C --> E[Diagramme d'États-Transitions<br><i>Comment réagit un objet/firmware aux événements ?</i>]
-    C --> F[Diagramme d'Activité<br><i>Quel est l'algorithme / workflow ?</i>]
-    C --> G[Code C++ / Qt / Python]
+    A["Besoins Clients et Cahier des charges"] --> B["Diagramme des Cas d'Utilisation<br>(Qui fait quoi ?)"]
+    B --> C["Diagramme de Classes<br>(Structure du code)"]
+    B --> D["Diagramme de Séquence<br>(Interactions dans le temps)"]
+    C --> E["Diagramme d'États-Transitions<br>(Automate réactif)"]
+    C --> F["Diagramme d'Activité<br>(Algorithme et Workflow)"]
+    C --> G["Code C++ / Qt / Python"]
     E --> G
 ```
 
