@@ -46,6 +46,19 @@ UC_Charge --> Cloud
 - `A ..> B : <<include>>` : inclusion (B est obligatoire).
 - `B <.. A : <<extend>>` : extension (A est optionnel).
 
+### Héritage (Généralisation) en Use Case :
+PlantUML utilise la flèche `--|>` (triangle vide) pour matérialiser l'héritage :
+
+```plantuml
+' 1. Héritage entre Acteurs (Admin hérite de Utilisateur)
+Technicien --|> Utilisateur
+
+' 2. Héritage entre Cas (Spécialisation d'un besoin générique)
+(Payer par CB) --|> (Régler la commande)
+(Payer par RFID) --|> (Régler la commande)
+```
+
+
 ---
 
 ## 3. Diagramme de Classes
