@@ -63,9 +63,9 @@ classDiagram
     class Voiture
     class Moteur
 
-    SuperClasse <|-- SousClasse : Héritage (Généralisation)
-    Conteneur o-- Element : Agrégation (faible)
-    Voiture *-- Moteur : Composition (forte)
+    SuperClasse <|-- SousClasse : Héritage
+    Conteneur o-- Element : Agrégation
+    Voiture *-- Moteur : Composition
 ```
 
 | Type de Relation | Notation PlantUML | Description & Règle Métier | Traduction en Code |

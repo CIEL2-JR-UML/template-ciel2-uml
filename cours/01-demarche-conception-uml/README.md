@@ -22,37 +22,7 @@ Cette approche empirique (« code & fix ») entraîne inévitablement :
 ### A. Le Cycle en V (Traditionnel & Industriel)
 Le cycle en V est une référence majeure dans l'industrie (défense, automobile, ferroviaire, médical, réseaux d'infrastructure) :
 
-```mermaid
-flowchart TD
-    subgraph Conception["Branche Conception (Descendante)"]
-        A["1. Expression du besoin"]
-        B["2. Spécification fonctionnelle (Use Case)"]
-        C["3. Architecture logicielle (Classes)"]
-        D["4. Conception détaillée (États et Activité)"]
-    end
-
-    subgraph Realisation["Réalisation"]
-        E["5. Développement (C++ / Python)"]
-    end
-
-    subgraph Validation["Branche Validation (Montante)"]
-        F["6. Tests Unitaires"]
-        G["7. Tests d'Intégration"]
-        H["8. Recette et Validation Client"]
-    end
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-    G --> H
-
-    D -.->|"Vérifié par"| F
-    C -.->|"Validé par"| G
-    B -.->|"Recetté par"| H
-```
+![Cycle de développement en V](../../ressources/images/cycle-en-v.svg)
 
 ### B. Les Démarches Agiles (Scrum, Kanban)
 Dans les environnements modernes, les développements s'effectuent par itérations courtes (sprints de 2 à 3 semaines). L'UML y conserve un rôle fondamental :

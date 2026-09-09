@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 560" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569" />
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Cycle de Développement en V — Modélisation &amp; Ingénierie Logicielle</text>
+  <text x="475" y="60" text-anchor="middle" font-size="14" fill="#64748b">Référentiel BTS CIEL (Cybersécurité, Informatique &amp; Réseaux, Électronique)</text>
+
+  <!-- Horizontal validation dashed lines -->
+  <line x1="280" y1="120" x2="670" y2="120" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" marker-end="url(#arrow)" />
+  <rect x="420" y="106" width="110" height="26" rx="13" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="475" y="123" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Recette Client</text>
+
+  <line x1="330" y1="200" x2="620" y2="200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" marker-end="url(#arrow)" />
+  <rect x="405" y="186" width="140" height="26" rx="13" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="475" y="203" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Tests de Validation</text>
+
+  <line x1="380" y1="280" x2="570" y2="280" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" marker-end="url(#arrow)" />
+  <rect x="405" y="266" width="140" height="26" rx="13" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="475" y="283" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Tests d'Intégration</text>
+
+  <line x1="430" y1="360" x2="520" y2="360" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" marker-end="url(#arrow)" />
+  <rect x="415" y="346" width="120" height="26" rx="13" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="475" y="363" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Tests Unitaires</text>
+
+  <!-- Left Branch Arrows (Descending) -->
+  <line x1="200" y1="148" x2="225" y2="172" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)" />
+  <line x1="250" y1="228" x2="275" y2="252" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)" />
+  <line x1="300" y1="308" x2="325" y2="332" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)" />
+  <line x1="350" y1="388" x2="420" y2="435" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)" />
+
+  <!-- Right Branch Arrows (Ascending) -->
+  <line x1="530" y1="435" x2="600" y2="388" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)" />
+  <line x1="625" y1="332" x2="650" y2="308" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)" />
+  <line x1="675" y1="252" x2="700" y2="228" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)" />
+  <line x1="725" y1="172" x2="750" y2="148" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)" />
+
+  <!-- LEFT BRANCH: CONCEPTION -->
+  <!-- Node 1: Expression du besoin -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="90" width="220" height="58" rx="10" fill="url(#blueGrad)" />
+    <text x="170" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1. Expression du Besoin</text>
+    <text x="170" y="133" text-anchor="middle" font-size="11" fill="#bfdbfe">Cahier des charges client</text>
+  </g>
+
+  <!-- Node 2: Spécification fonctionnelle (UC) -->
+  <g filter="url(#shadow)">
+    <rect x="110" y="170" width="220" height="58" rx="10" fill="url(#blueGrad)" />
+    <text x="220" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2. Spécification Fonctionnelle</text>
+    <text x="220" y="213" text-anchor="middle" font-size="11" font-weight="600" fill="#fef08a">Diagramme Use Case (UC)</text>
+  </g>
+
+  <!-- Node 3: Architecture Logicielle (Classes & Séquence) -->
+  <g filter="url(#shadow)">
+    <rect x="160" y="250" width="220" height="58" rx="10" fill="url(#blueGrad)" />
+    <text x="270" y="275" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3. Architecture Système</text>
+    <text x="270" y="293" text-anchor="middle" font-size="11" font-weight="600" fill="#fef08a">Diagramme de Classes &amp; Séquence</text>
+  </g>
+
+  <!-- Node 4: Conception détaillée (États / Activité) -->
+  <g filter="url(#shadow)">
+    <rect x="210" y="330" width="220" height="58" rx="10" fill="url(#blueGrad)" />
+    <text x="320" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4. Conception Détaillée</text>
+    <text x="320" y="373" text-anchor="middle" font-size="11" font-weight="600" fill="#fef08a">Diagrammes d'États &amp; d'Activité</text>
+  </g>
+
+  <!-- BOTTOM NODE: CODAGE -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="440" width="230" height="66" rx="12" fill="url(#purpleGrad)" stroke="#c4b5fd" stroke-width="2"/>
+    <text x="475" y="468" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">5. Réalisation &amp; Codage</text>
+    <text x="475" y="488" text-anchor="middle" font-size="12" font-weight="700" fill="#fef08a">C++20 (Qt / STL) &amp; Python 3</text>
+  </g>
+
+  <!-- RIGHT BRANCH: VALIDATION & TESTS -->
+  <!-- Node 6: Tests Unitaires -->
+  <g filter="url(#shadow)">
+    <rect x="520" y="330" width="220" height="58" rx="10" fill="url(#greenGrad)" />
+    <text x="630" y="355" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">6. Tests Unitaires</text>
+    <text x="630" y="373" text-anchor="middle" font-size="11" fill="#bbf7d0">Validation des classes et fonctions</text>
+  </g>
+
+  <!-- Node 7: Tests d'Intégration -->
+  <g filter="url(#shadow)">
+    <rect x="570" y="250" width="220" height="58" rx="10" fill="url(#greenGrad)" />
+    <text x="680" y="275" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">7. Tests d'Intégration</text>
+    <text x="680" y="293" text-anchor="middle" font-size="11" fill="#bbf7d0">Protocoles, bus, interfaces réseau</text>
+  </g>
+
+  <!-- Node 8: Tests de Validation -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="170" width="220" height="58" rx="10" fill="url(#greenGrad)" />
+    <text x="730" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">8. Validation Système</text>
+    <text x="730" y="213" text-anchor="middle" font-size="11" fill="#bbf7d0">Conformité aux cas d'utilisation</text>
+  </g>
+
+  <!-- Node 9: Recette Client -->
+  <g filter="url(#shadow)">
+    <rect x="670" y="90" width="220" height="58" rx="10" fill="url(#greenGrad)" />
+    <text x="780" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">9. Recette &amp; Déploiement</text>
+    <text x="780" y="133" text-anchor="middle" font-size="11" fill="#bbf7d0">Livraison finale et recette client</text>
+  </g>
+
+  <!-- Legend / Labels -->
+  <text x="170" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">▼ BRANCHE CONCEPTION</text>
+  <text x="780" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#065f46">▲ BRANCHE VALIDATION</text>
+</svg>

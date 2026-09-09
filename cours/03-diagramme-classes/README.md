@@ -45,22 +45,22 @@ classDiagram
     direction LR
     class Afficheur
     class Passerelle {
-        - nom : string
-        + executer() : void
+        -string nom
+        +executer() void
     }
     class Capteur {
-        <<abstract>>
-        # pin : int
-        + acquerir()* float
+        <<Abstract>>
+        #int pin
+        +acquerir() float
     }
     class CapteurDHT22 {
-        - humidite : float
-        + acquerir() float
+        -float humidite
+        +acquerir() float
     }
 
-    Passerelle *-- "1" Afficheur : Composition (Cycle de vie lié)
-    Passerelle o-- "0..*" Capteur : Agrégation (Pointeurs)
-    Capteur <|-- CapteurDHT22 : Héritage (Spécialisation)
+    Passerelle "1" *-- "1" Afficheur : Composition
+    Passerelle "1" o-- "0..*" Capteur : Agrege
+    Capteur <|-- CapteurDHT22 : Herite
 ```
 
 ### A. L'Association Simple & Navigabilité
