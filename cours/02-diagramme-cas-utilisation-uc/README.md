@@ -28,11 +28,7 @@ Représentés par des ellipses, ils décrivent une action complète produisant u
 
 ## 3. Les Relations entre Cas d'Utilisation
 
-```mermaid
-graph LR
-    A(["Consulter les mesures"]) -->|"<<include>>"| B(["S'authentifier"])
-    A -.->|"<<extend>>"| C(["Exporter au format CSV"])
-```
+![Relations d'Inclusion et d'Extension](../../ressources/images/relations-usecase.svg)
 
 ### A. L'Inclusion : `<<include>>`
 - **Définition :** Le cas source fait **systématiquement et obligatoirement** appel au cas inclus.
