@@ -52,21 +52,7 @@ graph TD
 - `*` ou `0..*` : Zéro à plusieurs (collection, tableau dynamique, `std::vector`)
 - `1..*` : Au moins un à plusieurs
 
-### Relations entre Classes
-```mermaid
-classDiagram
-    direction LR
-    class SuperClasse
-    class SousClasse
-    class Conteneur
-    class Element
-    class Voiture
-    class Moteur
-
-    SuperClasse <|-- SousClasse : Héritage
-    Conteneur o-- Element : Agrégation
-    Voiture *-- Moteur : Composition
-```
+![Les Relations entre Classes](images/relations-classes.svg)
 
 | Type de Relation | Notation PlantUML | Description & Règle Métier | Traduction en Code |
 | :--- | :---: | :--- | :--- |

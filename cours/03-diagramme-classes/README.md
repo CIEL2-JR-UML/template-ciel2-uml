@@ -40,28 +40,7 @@ Une classe est représentée par un rectangle divisé en trois compartiments :
 
 ## 3. Les Relations entre Classes
 
-```mermaid
-classDiagram
-    direction LR
-    class Afficheur
-    class Passerelle {
-        -string nom
-        +executer() void
-    }
-    class Capteur {
-        <<Abstract>>
-        #int pin
-        +acquerir() float
-    }
-    class CapteurDHT22 {
-        -float humidite
-        +acquerir() float
-    }
-
-    Passerelle "1" *-- "1" Afficheur : Composition
-    Passerelle "1" o-- "0..*" Capteur : Agrege
-    Capteur <|-- CapteurDHT22 : Herite
-```
+![Les Relations entre Classes](../../ressources/images/relations-classes.svg)
 
 ### A. L'Association Simple & Navigabilité
 Une association relie deux classes qui communiquent.

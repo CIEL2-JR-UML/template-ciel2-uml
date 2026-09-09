@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <linearGradient id="blueBox" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="drop" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Root: UML 2.5 -->
+  <g filter="url(#drop)">
+    <rect x="300" y="20" width="300" height="56" rx="12" fill="url(#mainGrad)" />
+    <text x="450" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">UML 2.5 : 14 Diagrammes</text>
+    <text x="450" y="64" text-anchor="middle" font-size="12" fill="#cbd5e1">Norme OMG pour la modélisation logicielle</text>
+  </g>
+
+  <!-- Connecting Lines from Root -->
+  <path d="M 450 76 L 450 110 L 230 110 L 230 140" fill="none" stroke="#64748b" stroke-width="2.5" />
+  <path d="M 450 76 L 450 110 L 670 110 L 670 140" fill="none" stroke="#64748b" stroke-width="2.5" />
+
+  <!-- BRANCH 1: STATIQUES -->
+  <g filter="url(#drop)">
+    <rect x="80" y="140" width="300" height="50" rx="10" fill="url(#blueBox)" />
+    <text x="230" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Diagrammes Statiques / Structurels</text>
+    <text x="230" y="180" text-anchor="middle" font-size="11" fill="#dbeafe">Architecture et découpage du code</text>
+  </g>
+
+  <!-- Statiques items -->
+  <g filter="url(#drop)">
+    <!-- Diagramme de Classes (Key) -->
+    <rect x="80" y="210" width="300" height="50" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+    <text x="100" y="234" font-size="13" font-weight="800" fill="#1e3a8a">★ Diagramme de Classes</text>
+    <text x="100" y="250" font-size="11" font-weight="600" fill="#2563eb">INCONTOURNABLE (BTS CIEL IR/ER)</text>
+    
+    <rect x="80" y="270" width="300" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="100" y="295" font-size="12" font-weight="600" fill="#475569">Diagramme d'Objets (Instances à l'instant T)</text>
+
+    <rect x="80" y="320" width="300" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="100" y="345" font-size="12" font-weight="600" fill="#475569">Diagramme de Composants (Modules &amp; Libs)</text>
+
+    <rect x="80" y="370" width="300" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="100" y="395" font-size="12" font-weight="600" fill="#475569">Diagramme de Déploiement (Matériel &amp; Réseau)</text>
+  </g>
+
+  <!-- BRANCH 2: DYNAMIQUES -->
+  <g filter="url(#drop)">
+    <rect x="520" y="140" width="300" height="50" rx="10" fill="url(#greenBox)" />
+    <text x="670" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Diagrammes Dynamiques / Comportement</text>
+    <text x="670" y="180" text-anchor="middle" font-size="11" fill="#d1fae5">Échanges, automates et processus</text>
+  </g>
+
+  <!-- Dynamiques items -->
+  <g filter="url(#drop)">
+    <!-- UC (Key) -->
+    <rect x="520" y="210" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2" />
+    <text x="540" y="232" font-size="13" font-weight="800" fill="#064e3b">★ Cas d'Utilisation (Use Case)</text>
+    <text x="540" y="247" font-size="10" font-weight="600" fill="#059669">Besoins fonctionnels et acteurs externes</text>
+
+    <!-- Sequence (Key) -->
+    <rect x="520" y="265" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2" />
+    <text x="540" y="287" font-size="13" font-weight="800" fill="#064e3b">★ Diagramme de Séquence</text>
+    <text x="540" y="302" font-size="10" font-weight="600" fill="#059669">Protocoles, API et chronologie des messages</text>
+
+    <!-- Etats (Key) -->
+    <rect x="520" y="320" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2" />
+    <text x="540" y="342" font-size="13" font-weight="800" fill="#064e3b">★ Diagramme d'États-Transitions</text>
+    <text x="540" y="357" font-size="10" font-weight="600" fill="#059669">Automates réactifs, capteurs et modems</text>
+
+    <!-- Activite (Key) -->
+    <rect x="520" y="375" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.5" />
+    <text x="540" y="397" font-size="13" font-weight="700" fill="#064e3b">★ Diagramme d'Activité</text>
+    <text x="540" y="412" font-size="10" fill="#059669">Algorithmes et flux parallèles (fork/join)</text>
+  </g>
+</svg>

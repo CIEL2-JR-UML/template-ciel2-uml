@@ -35,22 +35,7 @@ Dans les environnements modernes, les développements s'effectuent par itératio
 
 La norme UML 2.5 définit 14 types de diagrammes classés en deux catégories :
 
-```mermaid
-graph TD
-    UML["UML 2.5 : 14 Diagrammes"]
-    UML --> S["Diagrammes Statiques / Structurels"]
-    UML --> D["Diagrammes Dynamiques / Comportementaux"]
-    
-    S --> S1["Diagramme de Classes (Incontournable)"]
-    S --> S2["Diagramme d'Objets"]
-    S --> S3["Diagramme de Composants"]
-    S --> S4["Diagramme de Déploiement"]
-    
-    D --> D1["Cas d'Utilisation - UC (Incontournable)"]
-    D --> D2["Diagramme de Séquence (Incontournable)"]
-    D --> D3["Diagramme d'États-Transitions (Incontournable)"]
-    D --> D4["Diagramme d'Activité"]
-```
+![Les Deux Grandes Familles de Diagrammes UML](../../ressources/images/familles-diagrammes-uml.svg)
 
 ---
 
