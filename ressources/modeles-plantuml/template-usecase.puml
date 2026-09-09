@@ -1,0 +1,30 @@
+@startuml template-usecase
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+
+left to right direction
+
+actor "Utilisateur" as user
+actor "Administrateur" as admin
+actor "Serveur NTP" as ntp <<Système externe>>
+
+rectangle "Système à concevoir" {
+    usecase "Consulter les mesures" as UC_Consulter
+    usecase "Exporter les logs" as UC_Export
+    usecase "S'authentifier" as UC_Auth
+    usecase "Configurer les seuils" as UC_Config
+    usecase "Synchroniser l'heure" as UC_Sync
+}
+
+user --> UC_Consulter
+user --> UC_Export
+
+admin --> UC_Config
+admin --|> user : Héritage
+
+ntp --> UC_Sync
+
+UC_Export .> UC_Auth : <<include>>
+UC_Config .> UC_Auth : <<include>>
+UC_Consulter <.. (Filtrer par date) : <<extend>>
+@enduml

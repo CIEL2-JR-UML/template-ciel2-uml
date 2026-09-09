@@ -1,0 +1,38 @@
+@startuml template-classe
+skinparam classAttributeIconSize 0
+
+abstract class Capteur {
+    # id : int
+    # label : string
+    # valeurCourante : float
+    + Capteur(id: int, label: string)
+    + virtual ~Capteur()
+    + {abstract} acquerir() : bool
+    + getValeur() : float
+}
+
+class CapteurTemperature {
+    - unite : string
+    + CapteurTemperature(id: int, label: string, unite: string)
+    + acquerir() : bool
+}
+
+class Afficheur {
+    - resolutionX : int
+    - resolutionY : int
+    + Afficheur(resX: int, resY: int)
+    + afficherTexte(message: string) : void
+}
+
+class PasserelleIoT {
+    - nomPasserelle : string
+    - adresseIP : string
+    + PasserelleIoT(nom: string)
+    + ajouterCapteur(c: Capteur*) : void
+    + traiterToutesMesures() : void
+}
+
+Capteur <|-- CapteurTemperature : Héritage
+PasserelleIoT o-- "0..*" Capteur : Agrégation
+PasserelleIoT *-- "1" Afficheur : Composition
+@enduml

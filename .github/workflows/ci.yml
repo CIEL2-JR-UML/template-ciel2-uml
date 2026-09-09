@@ -1,0 +1,36 @@
+name: CI - Validation des codes et TP
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configuration de Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Vérification de la syntaxe des scripts Python des TP
+        run: |
+          python -m py_compile tp-exercices/tp2-classes-passerelle-iot/python/*.py
+          python tp-exercices/tp2-classes-passerelle-iot/python/main.py
+
+  validate-cpp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Compilation du code C++ du TP 2
+        run: |
+          cd tp-exercices/tp2-classes-passerelle-iot/cpp
+          make
+          ./passerelle_iot

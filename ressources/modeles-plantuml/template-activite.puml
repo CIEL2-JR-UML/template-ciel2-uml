@@ -1,0 +1,28 @@
+@startuml template-activite
+start
+
+:Initialiser le microcontrôleur et les bus (I2C, SPI);
+:Lire le fichier de configuration JSON depuis la flash;
+
+if (Configuration valide ?) then (oui)
+    :Appliquer les paramètres réseau;
+else (non)
+    :Charger les paramètres par défaut (DHCP + MQTT local);
+endif
+
+fork
+    :Tâche 1 : Échantillonner capteur température;
+fork again
+    :Tâche 2 : Échantillonner capteur humidité;
+end fork
+
+:Fusionner et horodater les données acquises;
+
+if (Connexion réseau active ?) then (oui)
+    :Envoyer la trame MQTT au broker;
+else (non)
+    :Sauvegarder dans la mémoire tampon EEPROM;
+endif
+
+stop
+@enduml

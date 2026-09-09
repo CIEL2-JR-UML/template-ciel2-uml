@@ -1,0 +1,33 @@
+@startuml template-etat-transition
+[*] --> Veille : Mise sous tension
+
+state Veille {
+    entry / eteindreLEDs()
+    entry / armerTimerReveil(60s)
+}
+
+state Acquisition {
+    entry / allumerLEDBleue()
+    do / lireCanauxADC()
+}
+
+state Transmission {
+    entry / connecterWiFi()
+    do / envoyerTrameMQTT()
+}
+
+state EnErreur {
+    entry / allumerLEDRouge()
+    entry / journaliserCodeErreur()
+}
+
+Veille --> Acquisition : TimerExpire
+Acquisition --> Transmission : [mesureValide == true] / formaterTrame()
+Acquisition --> EnErreur : [mesureValide == false] / incrementerErreurs()
+
+Transmission --> Veille : AckRecu / desactiverModem()
+Transmission --> EnErreur : after(5s) / timeoutCommunication()
+
+EnErreur --> Veille : after(10s) / resetAutomate()
+Veille --> [*] : CommandeArret
+@enduml

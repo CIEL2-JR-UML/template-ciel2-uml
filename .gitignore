@@ -1,0 +1,43 @@
+# Build C++
+*.o
+*.obj
+*.exe
+*.out
+*.app
+build/
+bin/
+Makefile.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# VS Code & IDEs
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# PlantUML outputs
+*.png
+*.svg
+!ressources/images/*.png
+!ressources/images/*.svg
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini

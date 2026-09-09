@@ -1,0 +1,31 @@
+@startuml
+' TP 3 : Automate du protocole série fiabilisé
+[*] --> Repos : Initialisation
+
+state Repos {
+    entry / ecouterBus()
+}
+
+state EnvoiRequete {
+    entry / emettreTrameREQ()
+    entry / armerTimer(3s)
+}
+
+state AttenteReponse {
+}
+
+state TraitementDonnees {
+    entry / emettreACK()
+    entry / enregistrerMesures()
+}
+
+state DefautCommunication {
+    entry / journaliserErreur()
+    entry / emettreAlarmeTechnique()
+}
+
+' Complétez ici les transitions reliant les états :
+' Repos --> EnvoiRequete : ...
+' EnvoiRequete --> AttenteReponse : ...
+
+@enduml

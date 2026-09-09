@@ -1,0 +1,25 @@
+@startuml
+' TP 1 : Borne de Recharge IRVE - BTS CIEL
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Conducteur" as User
+actor "Technicien de maintenance" as Tech
+actor "Serveur Cloud OCPP" as Cloud <<Système externe>>
+
+rectangle "Borne de Recharge IRVE" {
+    usecase "Démarrer une session de charge" as UC_Charge
+    usecase "Arrêter la session de charge" as UC_Stop
+    usecase "S'authentifier par badge RFID" as UC_Auth
+    usecase "Consulter les mesures en direct" as UC_Mesures
+    usecase "Recevoir un reçu par email" as UC_Recu
+    usecase "Lancer l'autodiagnostic matériel" as UC_Diag
+    usecase "Mettre à jour le firmware" as UC_Update
+    usecase "Arrêter la borne à distance" as UC_Urgence
+}
+
+' À compléter par l'étudiant :
+' 1. Relier les acteurs aux cas d'utilisation
+' 2. Ajouter les dépendances <<include>> et <<extend>>
+' 3. Ajouter l'héritage entre acteurs
+@enduml

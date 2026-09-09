@@ -1,0 +1,35 @@
+@startuml template-sequence
+autonumber
+
+actor "Technicien" as tech
+participant "IHM : Application" as ihm
+participant "GestionnaireCapteurs" as ctrl
+participant "CapteurTemp : Capteur" as sensor
+database "BaseDeDonnees" as db
+
+tech -> ihm : Cliquer sur "Actualiser"
+activate ihm
+
+ihm -> ctrl : demanderAcquisition()
+activate ctrl
+
+ctrl -> sensor : acquerir()
+activate sensor
+sensor --> ctrl : 21.4 (float)
+deactivate sensor
+
+alt Valeur > SeuilCritique (ex: 30°C)
+    ctrl -> ihm : notifierAlerte("Température trop élevée !")
+    ctrl -> db : enregistrerAlerte(valeur, timestamp)
+else Cas nominal
+    ctrl -> db : enregistrerMesure(valeur, timestamp)
+    activate db
+    db --> ctrl : confirmation (OK)
+    deactivate db
+    ctrl --> ihm : statut (Succès, 21.4°C)
+end
+
+deactivate ctrl
+ihm --> tech : Afficher mesures sur écran
+deactivate ihm
+@enduml
