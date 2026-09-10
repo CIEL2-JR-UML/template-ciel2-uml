@@ -1,0 +1,51 @@
+@startuml
+' CORRECTION TP 2 : Diagramme de Classes Passerelle IoT - BTS CIEL
+skinparam classAttributeIconSize 0
+
+abstract class Capteur {
+    # m_id : int
+    # m_label : string
+    # m_valeur : float
+    + Capteur(id: int, label: string)
+    + virtual ~Capteur()
+    + {abstract} acquerir() : bool
+    + getId() : int
+    + getLabel() : string
+    + getValeur() : float
+}
+
+class CapteurTemperature {
+    - m_unite : string
+    + CapteurTemperature(id: int, label: string, unite: string)
+    + acquerir() : bool
+    + getUnite() : string
+}
+
+class CapteurHumidite {
+    - m_pourcentageRelatif : bool
+    + CapteurHumidite(id: int, label: string, estRelatif: bool)
+    + acquerir() : bool
+}
+
+class AfficheurLCD {
+    + afficher(ligne1: string, ligne2: string) : void
+}
+
+class Passerelle {
+    - m_nom : string
+    - m_ip : string
+    - m_capteurs : vector<Capteur*>
+    - m_afficheur : AfficheurLCD
+    + Passerelle(nom: string, ip: string)
+    + ~Passerelle()
+    + connecterCapteur(capteur: Capteur*) : void
+    + executerCycleMesure() : void
+    + getNbCapteurs() : int
+}
+
+Capteur <|-- CapteurTemperature : Héritage
+Capteur <|-- CapteurHumidite    : Héritage
+Passerelle o-- "0..*" Capteur   : Agrégation (Pointeurs externes)
+Passerelle *-- "1" AfficheurLCD : Composition (Objet membre)
+
+@enduml

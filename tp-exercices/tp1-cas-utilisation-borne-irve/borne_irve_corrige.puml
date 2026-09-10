@@ -1,0 +1,49 @@
+@startuml
+' CORRECTION TP 1 : Borne de Recharge IRVE - BTS CIEL
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Conducteur" as User
+actor "Technicien de maintenance" as Tech
+actor "Serveur Cloud OCPP" as Cloud <<Système externe>>
+actor "Compteur Énergie MID" as Compteur <<Matériel externe>>
+
+' Héritage : Le technicien hérite de tous les droits du conducteur
+Tech --|> User
+
+rectangle "Borne de Recharge IRVE" {
+    usecase "Démarrer une session de charge" as UC_Charge
+    usecase "Arrêter la session de charge" as UC_Stop
+    usecase "S'authentifier par badge RFID" as UC_Auth
+    usecase "Consulter les mesures en direct" as UC_Mesures
+    usecase "Recevoir un reçu par email" as UC_Recu
+    usecase "Lancer l'autodiagnostic matériel" as UC_Diag
+    usecase "Mettre à jour le firmware" as UC_Update
+    usecase "Arrêter la borne à distance" as UC_Urgence
+}
+
+' Relations Conducteur
+User --> UC_Charge
+User --> UC_Stop
+User --> UC_Mesures
+
+' Relations Technicien
+Tech --> UC_Diag
+Tech --> UC_Update
+
+' Relations Superviseur Distant (OCPP)
+Cloud --> UC_Urgence
+UC_Charge --> Cloud : Notifier démarrage / fin
+UC_Mesures --> Compteur : Lire registres Modbus
+
+' Inclusions (Obligatoire)
+UC_Charge ..> UC_Auth : <<include>>
+UC_Stop ..> UC_Auth : <<include>>
+UC_Diag ..> UC_Auth : <<include>>
+UC_Update ..> UC_Auth : <<include>>
+
+' Extensions (Optionnel)
+UC_Charge <.. UC_Recu : <<extend>>
+
+@enduml

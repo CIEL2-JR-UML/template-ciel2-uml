@@ -1,0 +1,30 @@
+@startuml
+' CORRECTION TP 3 : Diagramme de Séquence du Protocole avec Répétitions
+autonumber
+skinparam responseMessageBelowArrow true
+
+participant "Passerelle : Master" as Mast
+participant "CapteurRS485 : Slave" as Slav
+
+== Scénario 1 : Échange Nominal ==
+Mast -> Slav : Trame REQ (ID=0x01, Code=0x03)
+activate Slav
+Slav --> Mast : Trame RESP (Data=23.4°C, CRC=0xA4F1)
+deactivate Slav
+Mast -> Slav : Trame ACK (Succès)
+
+== Scénario 2 : Échec initial puis succès après répétition ==
+Mast -> Slav : Trame REQ (Tentative 1/3)
+activate Slav
+Slav --> Mast : Trame CORROMPUE (Erreur CRC !)
+deactivate Slav
+note over Mast : Timeout ou CRC invalide
+Incrémenter retryCount (1)
+
+Mast -> Slav : Trame REQ (Tentative 2/3)
+activate Slav
+Slav --> Mast : Trame RESP (CRC OK)
+deactivate Slav
+Mast -> Slav : Trame ACK (Succès)
+
+@enduml

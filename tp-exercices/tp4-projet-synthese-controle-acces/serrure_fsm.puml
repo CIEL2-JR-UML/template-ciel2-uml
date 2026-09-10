@@ -1,0 +1,29 @@
+@startuml
+[*] --> Verrouillee : Initialisation
+
+state Verrouillee {
+    entry / activerRelaisVerrou()
+    entry / eteindreLEDVerte()
+    entry / eteindreLEDRouge()
+}
+
+state DeverrouilleeTemporaire {
+    entry / desactiverRelaisVerrou()
+    entry / allumerLEDVerte()
+    entry / bipSucces()
+    entry / armerTimer(5s)
+}
+
+state AlarmePorteOuverte {
+    entry / buzzerContinuON()
+    entry / allumerLEDRougeClignotante()
+    entry / envoyerAlerteIntrusion()
+}
+
+Verrouillee --> DeverrouilleeTemporaire : AccesAutorise
+DeverrouilleeTemporaire --> Verrouillee : after(5s) [PorteFermee == true]
+DeverrouilleeTemporaire --> AlarmePorteOuverte : after(30s) [PorteFermee == false]
+
+AlarmePorteOuverte --> Verrouillee : PorteRefermee / buzzerOFF()
+AlarmePorteOuverte --> Verrouillee : ResetVigile
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Usager" as User
+actor "Agent de sécurité" as Guard
+actor "Serveur d'Authentification" as SrvAuth <<Serveur Central>>
+
+Guard --|> User
+
+rectangle "Système de Contrôle d'Accès RFID" {
+    usecase "Franchir la porte par badge" as UC_Badge
+    usecase "Saisir code PIN complémentaire" as UC_PIN
+    usecase "Consulter l'historique des accès" as UC_Logs
+    usecase "Déverrouiller en urgence" as UC_Urgence
+    usecase "Gérer les autorisations" as UC_Admin
+}
+
+User --> UC_Badge
+Guard --> UC_Logs
+Guard --> UC_Urgence
+Guard --> UC_Admin
+
+UC_Badge .> UC_PIN : <<extend>> (Si salle sensible)
+UC_Badge --> SrvAuth : Valider UID badge & PIN
+UC_Admin --> SrvAuth : Mettre à jour droits
+@enduml

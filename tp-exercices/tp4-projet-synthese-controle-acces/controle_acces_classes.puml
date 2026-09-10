@@ -1,0 +1,56 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class LecteurRFID {
+    - m_busSPI : int
+    + LecteurRFID(bus: int)
+    + lireUID() : string
+}
+
+class ClavierCode {
+    - m_nbTouches : int
+    + ClavierCode()
+    + saisirCode(nbChiffres: int) : string
+}
+
+class GacheElectromagnetique {
+    - m_pinRelais : int
+    - m_estOuvert : bool
+    + GacheElectromagnetique(pin: int)
+    + deverrouiller() : void
+    + verrouiller() : void
+    + estOuverte() : bool
+}
+
+class Signalisation {
+    - m_pinLEDVerte : int
+    - m_pinLEDRouge : int
+    - m_pinBuzzer : int
+    + Signalisation(pinV: int, pinR: int, pinB: int)
+    + autoriserAcces() : void
+    + refuserAcces() : void
+    + alarmePorteBloquee() : void
+}
+
+class ClientAuthAPI {
+    - m_urlServeur : string
+    - m_cleAPI : string
+    + ClientAuthAPI(url: string, key: string)
+    + verifierDroits(uid: string, pin: string) : bool
+    + journaliserAcces(uid: string, succes: bool) : void
+}
+
+class ControleurAcces {
+    - m_idPorte : string
+    - m_requiertPIN : bool
+    + ControleurAcces(idPorte: string, requiertPIN: bool)
+    + traiterPresenceBadge() : void
+    + surveillerCapteurPorte() : void
+}
+
+ControleurAcces *-- "1" LecteurRFID
+ControleurAcces *-- "1" ClavierCode
+ControleurAcces *-- "1" GacheElectromagnetique
+ControleurAcces *-- "1" Signalisation
+ControleurAcces o-- "1" ClientAuthAPI
+@enduml
