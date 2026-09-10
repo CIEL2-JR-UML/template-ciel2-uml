@@ -45,6 +45,7 @@ La borne est équipée :
 2. **Élaboration du Diagramme Use Case :**
    - Complétez le fichier PlantUML fourni [`borne_irve.puml`](borne_irve.puml).
    - Intégrez correctement les relations `<<include>>` (ex: authentification) et `<<extend>>` (ex: envoi de reçu).
+   - *(Pour lancer l'aperçu du schéma dans VS Code : raccourci **`Alt + D`** ou voir le [**Tuto PlantUML**](../../ressources/tuto-plantuml.md))*.
 3. **Fiche descriptive textuelle :**
    - Rédigez dans un fichier `compte_rendu.md` la fiche détaillée du cas d'utilisation **« Démarrer une session de recharge »** (préconditions, scénario nominal en 6 à 8 étapes, scénarios d'exceptions, postconditions).
 
