@@ -1,10 +1,10 @@
 # 📖 Mémento UML 2.5 (Cheatsheet BTS CIEL)
 
-Ce mémento rassemble les règles fondamentales, les symboles normalisés et les astuces de modélisation pour réussir vos épreuves de BTS CIEL (E5 et projet E6).
+Ce mémento rassemble les règles indispensables pour maîtriser les **3 diagrammes clés** du BTS CIEL.
 
 ---
 
-## 1. Vue d'ensemble des 5 Diagrammes Clés en BTS CIEL
+## 1. Vue d'ensemble du Cycle de Modélisation
 
 ![Vue d'ensemble UML](images/vue-ensemble-uml.svg)
 
@@ -14,16 +14,16 @@ Ce mémento rassemble les règles fondamentales, les symboles normalisés et les
 
 ### Éléments fondamentaux
 - **Acteur :** Entité externe (humain, système tiers, composant matériel autonome, timer) interagissant avec le système.
-- **Cas d'utilisation :** Ensemble d'actions réalisées par le système pour produire un résultat observable pour un acteur.
+- **Cas d'utilisation :** Ensemble d'actions produisant un résultat observable pour un acteur (nommé avec un verbe à l'infinitif).
 - **Frontière :** Rectangle délimitant le système analysé du monde extérieur.
 
 ### Relations
-| Relation | Symbole | Signification | Règle d'or |
-| :--- | :---: | :--- | :--- |
-| **Association** | `───` | L'acteur participe au cas d'utilisation | Pas de flèche sauf cas particulier |
-| **Inclusion** | `-.-> <<include>>` | Le cas A **inclut obligatoirement** le cas B | Exécution systématique (ex : s'authentifier) |
-| **Extension** | `-.-> <<extend>>` | Le cas B **étend optionnellement** le cas A | Déclenché sous condition / point d'extension |
-| **Généralisation** | `──▷` | Héritage de rôle ou spécialisation d'un cas | Un *Administrateur* hérite d'un *Utilisateur* |
+| Relation | Symbole | Signification |
+| :--- | :---: | :--- |
+| **Association** | `───` | L'acteur participe au cas d'utilisation |
+| **Inclusion** | `-.-> <<include>>` | Le cas de base **inclut obligatoirement** le sous-cas (systématique) |
+| **Extension** | `-.-> <<extend>>` | Le cas étendu s'exécute **optionnellement** selon une condition |
+| **Généralisation** | `──▷` | Héritage de rôle entre acteurs ou spécialisation de cas |
 
 ---
 
@@ -32,54 +32,29 @@ Ce mémento rassemble les règles fondamentales, les symboles normalisés et les
 ### Visibilité des Membres
 | Symbole | Visibilité | Portée |
 | :---: | :--- | :--- |
-| `+` | **Public** | Accessible depuis n'importe quel code externe |
-| `-` | **Private** | Accessible uniquement depuis la classe elle-même (encapsulation) |
-| `#` | **Protected** | Accessible par la classe et ses classes dérivées (héritage) |
-| `~` | **Package** | Accessible au sein du même package / module |
+| `+` | **Public** | Accessible depuis tout le code |
+| `-` | **Private** | Accessible uniquement dans la classe (encapsulation) |
+| `#` | **Protected** | Accessible par la classe et ses classes dérivées |
 
-### Multiplicités / Cardinalités Courantes
-- `1` : Exactement un
-- `0..1` : Zéro ou un (optionnel / pointeur pouvant être nul)
-- `*` ou `0..*` : Zéro à plusieurs (collection, tableau dynamique, `std::vector`)
-- `1..*` : Au moins un à plusieurs
-
+### Les 3 Relations Clés
 ![Les Relations entre Classes](images/relations-classes.svg)
 
-| Type de Relation | Notation PlantUML | Description & Règle Métier | Traduction en Code |
+| Relation | Symbole PlantUML | Signification | Traduction en Code |
 | :--- | :---: | :--- | :--- |
-| **Association** | `A --> B` | A connaît B, pas de lien de possession vital | Pointeur ou référence simple |
-| **Agrégation** | `A o-- B` | Le "tout" possède la "partie", mais la partie survit sans le tout | Pointeur passé en paramètre |
-| **Composition** | `A *-- B` | Le "tout" possède exclusivement la "partie" ; si A meurt, B meurt | Objet membre direct ou allocation exclusive |
-| **Héritage** | `A <|-- B` | B est un cas particulier de A ("est un") | `class B : public A` en C++ |
-| **Dépendance** | `A ..> B` | A utilise temporairement B (paramètre ou variable locale) | Paramètre de méthode éphémère |
+| **Héritage** | `<\|--` | « Est un » (généralisation / polymorphisme) | `class B : public A` / `class B(A):` |
+| **Agrégation** | `o--` | Contenant / contenu faible (cycles de vie indépendants) | `Capteur*` en paramètre |
+| **Composition** | `*--` | Contenant / contenu fort (cycle de vie lié) | Objet membre direct ou `unique_ptr` |
 
 ---
 
 ## 4. Diagramme de Séquence
 
-### Types de Messages
-- **Synchrone :** Flèche pleine `->` (l'émetteur attend la fin de l'exécution).
-- **Asynchrone :** Flèche ouverte `->>` (l'émetteur envoie et continue sans attendre).
-- **Réponse :** Flèche pointillée `-->` (valeur renvoyée à la fin d'un appel).
+### Messages & Chronologie
+- `->` : **Message synchrone** (bloquant, appel de fonction classique).
+- `->>` : **Message asynchrone** (non bloquant, paquet réseau UDP/MQTT).
+- `-->` : **Réponse / Retour** (pointillés, renvoi d'une valeur).
 
-### Fragments Combinés Essentiels
-- `alt` : Alternative conditionnelle (`if ... else`).
-- `opt` : Optionnel (`if` sans `else`).
-- `loop` : Répétition (`for`, `while`).
-- `par` : Traitements parallèles (threads, multitâche).
-
----
-
-## 5. Diagramme d'États-Transitions
-
-### Syntaxe normalisée d'une transition :
-$$\text{Événement} \; [\text{Condition de Garde}] \; / \; \text{Action}$$
-
-- **Événement :** Ce qui déclenche la transition (ex: `bouton_appuye`, `trame_recue`, `after(5s)`).
-- **Garde :** Condition booléenne indispensable pour franchir la transition (ex: `[batterie > 20%]`).
-- **Action :** Opération brève exécutée lors du franchissement (ex: `/ allumerLED()`).
-
-### Actions d'un État :
-- `entry /` : action exécutée dès l'entrée dans l'état.
-- `do /` : activité continue exécutée tant que l'on reste dans l'état.
-- `exit /` : action exécutée juste avant de quitter l'état.
+### Fragments Combinés
+- `alt ... else ... end` : Alternative conditionnelle (`if ... else`).
+- `opt ... end` : Traitement optionnel (`if` sans `else`).
+- `loop ... end` : Répétition (`for`, `while`).

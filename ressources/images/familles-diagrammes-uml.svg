@@ -1,84 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
   <defs>
-    <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b" />
-      <stop offset="100%" stop-color="#334155" />
-    </linearGradient>
-    <linearGradient id="blueBox" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e40af" />
-      <stop offset="100%" stop-color="#3b82f6" />
-    </linearGradient>
-    <linearGradient id="greenBox" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#065f46" />
-      <stop offset="100%" stop-color="#10b981" />
-    </linearGradient>
-    <filter id="drop" x="-5%" y="-5%" width="115%" height="115%">
-      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.1"/>
     </filter>
   </defs>
 
-  <!-- Root: UML 2.5 -->
-  <g filter="url(#drop)">
-    <rect x="300" y="20" width="300" height="56" rx="12" fill="url(#mainGrad)" />
-    <text x="450" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">UML 2.5 : 14 Diagrammes</text>
-    <text x="450" y="64" text-anchor="middle" font-size="12" fill="#cbd5e1">Norme OMG pour la modélisation logicielle</text>
-  </g>
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="800" fill="#0f172a">Le Trio Fondamental de l'UML (BTS CIEL 2)</text>
+  <text x="450" y="60" text-anchor="middle" font-size="13" fill="#64748b">Les 3 diagrammes indispensables pour concevoir et développer vos projets</text>
 
-  <!-- Connecting Lines from Root -->
-  <path d="M 450 76 L 450 110 L 230 110 L 230 140" fill="none" stroke="#64748b" stroke-width="2.5" />
-  <path d="M 450 76 L 450 110 L 670 110 L 670 140" fill="none" stroke="#64748b" stroke-width="2.5" />
-
-  <!-- BRANCH 1: STATIQUES -->
-  <g filter="url(#drop)">
-    <rect x="80" y="140" width="300" height="50" rx="10" fill="url(#blueBox)" />
-    <text x="230" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Diagrammes Statiques / Structurels</text>
-    <text x="230" y="180" text-anchor="middle" font-size="11" fill="#dbeafe">Architecture et découpage du code</text>
-  </g>
-
-  <!-- Statiques items -->
-  <g filter="url(#drop)">
-    <!-- Diagramme de Classes (Key) -->
-    <rect x="80" y="210" width="300" height="50" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
-    <text x="100" y="234" font-size="13" font-weight="800" fill="#1e3a8a">★ Diagramme de Classes</text>
-    <text x="100" y="250" font-size="11" font-weight="600" fill="#2563eb">INCONTOURNABLE (BTS CIEL IR/ER)</text>
+  <!-- Box 1: Use Case -->
+  <g transform="translate(30, 90)" filter="url(#sh)">
+    <rect x="0" y="0" width="260" height="250" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="0" y="0" width="260" height="45" rx="12" fill="#2563eb"/>
+    <text x="130" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">1. Cas d'Utilisation</text>
     
-    <rect x="80" y="270" width="300" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
-    <text x="100" y="295" font-size="12" font-weight="600" fill="#475569">Diagramme d'Objets (Instances à l'instant T)</text>
+    <text x="20" y="75" font-size="12" font-weight="700" fill="#1e3a8a">Rôle :</text>
+    <text x="20" y="95" font-size="11" fill="#334155">Expression des besoins du point</text>
+    <text x="20" y="110" font-size="11" fill="#334155">de vue des utilisateurs externes.</text>
 
-    <rect x="80" y="320" width="300" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
-    <text x="100" y="345" font-size="12" font-weight="600" fill="#475569">Diagramme de Composants (Modules &amp; Libs)</text>
+    <text x="20" y="145" font-size="12" font-weight="700" fill="#1e3a8a">Éléments Clés :</text>
+    <text x="20" y="165" font-size="11" fill="#334155">• Acteurs humains et matériels</text>
+    <text x="20" y="185" font-size="11" fill="#334155">• Relations &lt;&lt;include&gt;&gt; et &lt;&lt;extend&gt;&gt;</text>
+    <text x="20" y="205" font-size="11" fill="#334155">• Fiches de description textuelle</text>
 
-    <rect x="80" y="370" width="300" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
-    <text x="100" y="395" font-size="12" font-weight="600" fill="#475569">Diagramme de Déploiement (Matériel &amp; Réseau)</text>
+    <rect x="20" y="222" width="220" height="18" rx="4" fill="#dbeafe"/>
+    <text x="130" y="235" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">Module 02 &amp; TP 1</text>
   </g>
 
-  <!-- BRANCH 2: DYNAMIQUES -->
-  <g filter="url(#drop)">
-    <rect x="520" y="140" width="300" height="50" rx="10" fill="url(#greenBox)" />
-    <text x="670" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Diagrammes Dynamiques / Comportement</text>
-    <text x="670" y="180" text-anchor="middle" font-size="11" fill="#d1fae5">Échanges, automates et processus</text>
+  <!-- Box 2: Classes -->
+  <g transform="translate(320, 90)" filter="url(#sh)">
+    <rect x="0" y="0" width="260" height="250" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <rect x="0" y="0" width="260" height="45" rx="12" fill="#059669"/>
+    <text x="130" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">2. Diagramme de Classes</text>
+
+    <text x="20" y="75" font-size="12" font-weight="700" fill="#064e3b">Rôle :</text>
+    <text x="20" y="95" font-size="11" fill="#334155">Architecture statique orientée objet</text>
+    <text x="20" y="110" font-size="11" fill="#334155">du code (firmware et logiciel).</text>
+
+    <text x="20" y="145" font-size="12" font-weight="700" fill="#064e3b">Éléments Clés :</text>
+    <text x="20" y="165" font-size="11" fill="#334155">• Encapsulation (+, -, #)</text>
+    <text x="20" y="185" font-size="11" fill="#334155">• Héritage et polymorphisme</text>
+    <text x="20" y="205" font-size="11" fill="#334155">• Agrégation et Composition</text>
+
+    <rect x="20" y="222" width="220" height="18" rx="4" fill="#d1fae5"/>
+    <text x="130" y="235" text-anchor="middle" font-size="10" font-weight="700" fill="#065f46">Module 03, 05 &amp; TP 2</text>
   </g>
 
-  <!-- Dynamiques items -->
-  <g filter="url(#drop)">
-    <!-- UC (Key) -->
-    <rect x="520" y="210" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2" />
-    <text x="540" y="232" font-size="13" font-weight="800" fill="#064e3b">★ Cas d'Utilisation (Use Case)</text>
-    <text x="540" y="247" font-size="10" font-weight="600" fill="#059669">Besoins fonctionnels et acteurs externes</text>
+  <!-- Box 3: Sequence -->
+  <g transform="translate(610, 90)" filter="url(#sh)">
+    <rect x="0" y="0" width="260" height="250" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="0" y="0" width="260" height="45" rx="12" fill="#7c3aed"/>
+    <text x="130" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">3. Diagramme de Séquence</text>
 
-    <!-- Sequence (Key) -->
-    <rect x="520" y="265" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2" />
-    <text x="540" y="287" font-size="13" font-weight="800" fill="#064e3b">★ Diagramme de Séquence</text>
-    <text x="540" y="302" font-size="10" font-weight="600" fill="#059669">Protocoles, API et chronologie des messages</text>
+    <text x="20" y="75" font-size="12" font-weight="700" fill="#581c87">Rôle :</text>
+    <text x="20" y="95" font-size="11" fill="#334155">Dynamique temporelle des échanges</text>
+    <text x="20" y="110" font-size="11" fill="#334155">inter-objets et protocoles réseaux.</text>
 
-    <!-- Etats (Key) -->
-    <rect x="520" y="320" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2" />
-    <text x="540" y="342" font-size="13" font-weight="800" fill="#064e3b">★ Diagramme d'États-Transitions</text>
-    <text x="540" y="357" font-size="10" font-weight="600" fill="#059669">Automates réactifs, capteurs et modems</text>
+    <text x="20" y="145" font-size="12" font-weight="700" fill="#581c87">Éléments Clés :</text>
+    <text x="20" y="165" font-size="11" fill="#334155">• Lignes de vie et activations</text>
+    <text x="20" y="185" font-size="11" fill="#334155">• Messages synchrones/asynchrones</text>
+    <text x="20" y="205" font-size="11" fill="#334155">• Fragments conditionnels (alt, loop)</text>
 
-    <!-- Activite (Key) -->
-    <rect x="520" y="375" width="300" height="45" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.5" />
-    <text x="540" y="397" font-size="13" font-weight="700" fill="#064e3b">★ Diagramme d'Activité</text>
-    <text x="540" y="412" font-size="10" fill="#059669">Algorithmes et flux parallèles (fork/join)</text>
+    <rect x="20" y="222" width="220" height="18" rx="4" fill="#ede9fe"/>
+    <text x="130" y="235" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">Module 04 &amp; TP 3</text>
   </g>
 </svg>

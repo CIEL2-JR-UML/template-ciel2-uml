@@ -4,57 +4,49 @@
 
 ## 1. Pourquoi concevoir avant de coder ?
 
-Dans le cadre des projets industriels et des épreuves professionnelles du **BTS CIEL** (épreuve **E5** : Conception et développement logiciel / matériel, et épreuve **E6** : Projet de fin d'études), une erreur récurrente consiste à se lancer immédiatement dans l'écriture du code sans phase préalable d'analyse et de modélisation.
-
-Cette approche empirique (« code & fix ») entraîne inévitablement :
-- Une incompréhension des besoins réels de l'utilisateur.
-- Une architecture logicielle rigide, non réutilisable et difficilement testable.
-- Des régressions constantes lors de l'ajout de nouvelles fonctionnalités.
-- Une documentation inexistante rendant impossible le travail en équipe.
+Dans les projets industriels et les épreuves professionnelles du **BTS CIEL** (épreuve **E5** : Conception logicielle/matérielle, et épreuve **E6** : Projet de fin d'études), une approche sans phase de modélisation mène inévitablement à des bugs, des régressions et une architecture impossible à maintenir.
 
 > [!IMPORTANT]
-> **UML (Unified Modeling Language)** n'est pas un langage de programmation, mais un **langage graphique standardisé** (normalisé par l'OMG - *Object Management Group*) permettant de **spécifier**, **visualiser**, **concevoir** et **documenter** les architectures logicielles et matérielles.
+> **UML (Unified Modeling Language)** est un **langage graphique standardisé** (OMG) permettant de **spécifier**, **visualiser** et **documenter** les architectures logicielles et matérielles.
 
 ---
 
-## 2. Les Cycles de Vie de Projet
-
-### A. Le Cycle en V (Traditionnel & Industriel)
-Le cycle en V est une référence majeure dans l'industrie (défense, automobile, ferroviaire, médical, réseaux d'infrastructure) :
+## 2. Le Cycle de Développement en V
 
 ![Cycle de développement en V](../../ressources/images/cycle-en-v.svg)
 
-### B. Les Démarches Agiles (Scrum, Kanban)
-Dans les environnements modernes, les développements s'effectuent par itérations courtes (sprints de 2 à 3 semaines). L'UML y conserve un rôle fondamental :
-- En début de sprint : modélisation rapide sur tableau blanc ou en Mermaid/PlantUML pour aligner l'équipe sur la structure des classes et les contrats d'API.
-- Pendant la réalisation : maintien d'un diagramme de classes et de séquence à jour pour documenter le dépôt Git.
+- **Branche descendante (Conception) :** On part du besoin client (Use Case) pour concevoir la structure logicielle (Classes) et les échanges dynamiques (Séquence).
+- **Bas du V (Réalisation) :** Codage propre en **C++** (orienté objet, Qt, embarqué) et **Python**.
+- **Branche montante (Validation) :** Tests unitaires des classes, tests d'intégration des protocoles, et recette conforme aux cas d'utilisation.
 
 ---
 
-## 3. Les Deux Grandes Familles de Diagrammes UML
+## 3. Les 3 Diagrammes Fondamentaux en BTS CIEL
 
-La norme UML 2.5 définit 14 types de diagrammes classés en deux catégories :
+La norme UML propose de nombreux diagrammes, mais dans la filière **BTS CIEL**, trois diagrammes constituent 90% du besoin industriel :
 
-![Les Deux Grandes Familles de Diagrammes UML](../../ressources/images/familles-diagrammes-uml.svg)
-
----
-
-## 4. Les 5 Diagrammes Incontournables en BTS CIEL
-
-| Diagramme | Catégorie | Question à laquelle il répond | Importance BTS CIEL |
-| :--- | :---: | :--- | :---: |
-| **Cas d'Utilisation (UC)** | Dynamique / Besoins | *Quelles fonctionnalités le système offre-t-il aux utilisateurs externes ?* | Épreuve E5 / Dossier E6 |
-| **Classes** | Statique | *Comment sont découpées et reliées les entités logicielles (classes, héritage, collections) ?* | Épreuve E5 / Épreuve E6 |
-| **Séquence** | Dynamique | *Comment les objets s'échangent-ils des messages chronologiques sur le réseau ou en mémoire ?* | Protocoles & API |
-| **États-Transitions** | Dynamique | *Comment un sous-système réactif (modem, capteur, automate) change-t-il d'état selon les événements ?* | Embarqué & Protocoles |
-| **Activité** | Dynamique | *Quel est le cheminement logique, décisionnel ou parallèle d'un algorithme ?* | Traitements & Algorithmes |
+| Diagramme | Type | Question à laquelle il répond | Utilité en Projet CIEL |
+| :--- | :---: | :--- | :--- |
+| **Cas d'Utilisation (UC)** | Fonctionnel | *Quelles fonctionnalités le système offre-t-il aux utilisateurs et systèmes tiers ?* | Expression du besoin et dossier de spécification (E5/E6). |
+| **Classes** | Statique | *Comment sont découpées et reliées les entités logicielles (attributs, méthodes, héritage, associations) ?* | Pierre angulaire de la programmation orientée objet en C++ et Python. |
+| **Séquence** | Dynamique | *Comment les objets et services réseau dialoguent-ils chronologiquement au fil du temps ?* | Protocoles de communication (MQTT, HTTP REST, UART, SPI, Sockets). |
 
 ---
 
-## 5. Synthèse & Bonnes Pratiques pour les Étudiants
+## 4. Cohérence entre les Diagrammes
 
-1. **Un diagramme n'est pas une fin en soi :** Il doit être lisible, sobre et répondre à un problème précis d'ingénierie.
-2. **Cohérence inter-diagrammes :**
-   - Chaque cas d'utilisation important dans le diagramme UC se traduit par un scénario représenté par un **diagramme de séquence**.
-   - Chaque participant du diagramme de séquence doit correspondre à une **classe** existant dans le **diagramme de classes**.
-   - Un objet ayant un cycle de vie complexe dans le diagramme de classes mérite son **diagramme d'états-transitions**.
+```
++---------------------------+
+| Cas d'Utilisation (UC)    |  <-- Définit les fonctionnalités attendues
++---------------------------+
+              │
+              ▼
++---------------------------+
+| Diagramme de Séquence     |  <-- Met en scène les objets réalisant chaque cas
++---------------------------+
+              │
+              ▼
++---------------------------+
+| Diagramme de Classes      |  <-- Structure le code source (C++ / Python)
++---------------------------+
+```
