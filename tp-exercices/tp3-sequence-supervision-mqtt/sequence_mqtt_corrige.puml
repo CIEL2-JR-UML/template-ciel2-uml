@@ -1,0 +1,42 @@
+@startuml
+' CORRECTION TP 3 : Diagramme de Séquence MQTT - BTS CIEL
+autonumber
+skinparam responseMessageBelowArrow true
+
+actor "Horloge Interne" as Timer
+participant "ControleurPrincipal" as Ctrl
+participant "CapteurTemp : Capteur" as Sonde
+participant "ClientMQTT" as MQTT
+boundary "Broker Distant" as Broker
+
+Timer -> Ctrl : tick10s()
+activate Ctrl
+
+Ctrl -> Sonde : lireTemperature()
+activate Sonde
+Sonde --> Ctrl : 28.5 (float)
+deactivate Sonde
+
+Ctrl -> Ctrl : verifierSeuil(temp)
+
+alt temp >= 25.0 °C (Seuil d'alerte dépassé)
+    Ctrl -> MQTT : publierAlerte("alerte/critique", "CRITIQUE: 28.5 °C")
+    activate MQTT
+    MQTT ->> Broker : MQTT PUBLISH (QoS=1, Topic="alerte/critique")
+    activate Broker
+    Broker -->> MQTT : PUBACK (Packet ID: 42)
+    deactivate Broker
+    MQTT --> Ctrl : StatutEnvoi (OK)
+    deactivate MQTT
+else Cas nominal (Température normale)
+    Ctrl -> MQTT : publierTelemetrie("mesures/temp", "28.5")
+    activate MQTT
+    MQTT ->> Broker : MQTT PUBLISH (QoS=0, Topic="mesures/temp")
+    MQTT --> Ctrl : StatutEnvoi (OK)
+    deactivate MQTT
+end
+
+Ctrl -> Ctrl : miseEnSommeil()
+deactivate Ctrl
+
+@enduml
