@@ -1,0 +1,48 @@
+﻿@startuml
+' TP 4 : Diagramme de Séquence - Contrôle d'Accès RFID
+autonumber
+skinparam responseMessageBelowArrow true
+
+actor "Usager" as User
+participant "LecteurRFID" as RFID
+participant "ControleurAcces" as Ctrl
+participant "ClientAuthAPI" as API
+participant "GacheElectrique" as Gache
+participant "Signalisation" as LED
+
+User -> RFID : approcherBadge()
+activate RFID
+
+RFID -> Ctrl : notifierDetection("UID_A1B2")
+activate Ctrl
+deactivate RFID
+
+' Le contrôleur vérifie les droits auprès de l'API :
+Ctrl -> API : validerDroits("UID_A1B2", "1234")
+activate API
+API --> Ctrl : reponse (valide = true)
+deactivate API
+
+' ==============================================================================
+' TODO 1 : Fragment Conditionnel alt (Accès Autorisé vs Refusé)
+' Complétez l'action de déverrouillage et la signalisation verte dans le cas valide.
+' ------------------------------------------------------------------------------
+alt reponse == true [Accès Autorisé]
+    ' TODO 1.1 : Le contrôleur ordonne le déverrouillage pendant 5s
+    ' Indice : Ctrl -> Gache : deverrouiller(5)
+    ' [ÉCRIVEZ LA LIGNE ICI]
+    
+    ' TODO 1.2 : Le contrôleur déclenche la LED verte
+    ' Indice : Ctrl -> LED : accesAutorise()
+    ' [ÉCRIVEZ LA LIGNE ICI]
+
+else reponse == false [Accès Refusé - Déjà fourni]
+    Ctrl -> LED : accesRefuse()
+    activate LED
+    deactivate LED
+end
+
+Ctrl -> Ctrl : attenteProchainBadge()
+deactivate Ctrl
+
+@enduml

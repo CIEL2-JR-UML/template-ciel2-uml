@@ -1,0 +1,75 @@
+﻿@startuml
+' TP 2 : Diagramme de Classes - Passerelle IoT (BTS CIEL)
+skinparam classAttributeIconSize 0
+
+' ==============================================================================
+' 1. CLASSES FOURNIES
+' ==============================================================================
+
+abstract class Capteur {
+    # m_id : int
+    # m_label : string
+    # m_valeur : float
+    + Capteur(id: int, label: string)
+    + virtual ~Capteur()
+    + {abstract} acquerir() : bool
+    + getId() : int
+    + getLabel() : string
+    + getValeur() : float
+}
+
+class AfficheurLCD {
+    + afficher(l1: string, l2: string) : void
+}
+
+class Passerelle {
+    - m_nom : string
+    - m_ip : string
+    + Passerelle(nom: string, ip: string)
+    + ~Passerelle()
+    + connecterCapteur(capteur: Capteur*) : void
+    + executerCycleMesure() : void
+}
+
+' ==============================================================================
+' TODO 1 : Définir les deux classes de capteurs concrètes
+' ------------------------------------------------------------------------------
+' 1.1 Classe CapteurTemperature (possède l'attribut privé "- m_unite : string")
+class CapteurTemperature {
+    ' [ÉCRIVEZ L'ATTRIBUT ICI]
+    + CapteurTemperature(id: int, label: string)
+    + acquerir() : bool
+}
+
+' 1.2 Classe CapteurHumidite (possède l'attribut privé "- m_pourcentageRelatif : bool")
+class CapteurHumidite {
+    ' [ÉCRIVEZ L'ATTRIBUT ICI]
+    + CapteurHumidite(id: int, label: string)
+    + acquerir() : bool
+}
+
+' ==============================================================================
+' TODO 2 : Héritage (<|--)
+' Indiquez que CapteurTemperature et CapteurHumidite héritent de Capteur :
+' Syntaxe : ClasseMere <|-- ClasseFille
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ LES 2 LIGNES D'HÉRITAGE ICI]
+
+
+' ==============================================================================
+' TODO 3 : Agrégation faible (o--)
+' La Passerelle référence entre 0 et plusieurs (0..*) Capteur :
+' Syntaxe : ClasseContenant o-- "0..*" ClasseContenue : nom_role
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ LA LIGNE D'AGRÉGATION ICI]
+
+
+' ==============================================================================
+' TODO 4 : Composition forte (*--)
+' La Passerelle contient obligatoirement 1 seul AfficheurLCD soudé au boîtier :
+' Syntaxe : ClasseContenant *-- "1" ClasseContenue : nom_role
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ LA LIGNE DE COMPOSITION ICI]
+
+
+@enduml

@@ -9,6 +9,9 @@ Les TP sont articulés autour des **3 diagrammes fondamentaux** exigés aux épr
 | **TP 3** | [**tp3-sequence-supervision-mqtt**](tp3-sequence-supervision-mqtt/) | **Diagramme de Séquence** | Télémétrie capteurs et publication MQTT |
 | **TP 4** | [**tp4-projet-synthese-controle-acces**](tp4-projet-synthese-controle-acces/) | **Synthèse (UC + Classes + Séquence)** | Système de contrôle d'accès sécurisé par badge RFID |
 
+> 💡 **Méthode pédagogique :** Tous les TP sont des **exercices guidés à trous (squelettes pré-remplis à 80%)**. Vous n'avez pas à tout concevoir de zéro : ouvrez simplement les fichiers fournis et complétez les balises `TODO` indiquées avec les indices syntaxiques !
+
+
 ---
 
 <div align="center">
