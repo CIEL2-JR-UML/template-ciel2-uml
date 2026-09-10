@@ -37,3 +37,18 @@ Dans ce TP, vous allez modéliser puis implémenter l'architecture logicielle d'
 3. **Validation :**
    - En C++ : compilez avec `make` et exécutez le binaire `./passerelle_iot`.
    - En Python : lancez `python main.py`.
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite Logique |
+| :--- | :---: | ---: |
+| [**Cours 03 : Diagramme de Classes**](../../cours/03-diagramme-classes/) | [**Sommaire des TP**](../README.md) | [**Chapitre 04 : Diagramme de Séquence ➔**](../../cours/04-diagramme-sequence/) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Passer à l'étape suivante : Chapitre 04 — Diagramme de Séquence &nbsp; </kbd>](../../cours/04-diagramme-sequence/)
+
+</div>
+

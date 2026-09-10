@@ -44,3 +44,18 @@ Le système met en scène 4 participants :
    - Barre d'activation (`activate` / `deactivate`).
    - Fragment conditionnel `alt ... else ... end`.
 3. Visualisez le schéma avec le raccourci **`Alt + D`**.
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite Logique |
+| :--- | :---: | ---: |
+| [**Cours 04 : Diagramme de Séquence**](../../cours/04-diagramme-sequence/) | [**Sommaire des TP**](../README.md) | [**Chapitre 05 : Passage UML vers Code ➔**](../../cours/05-passage-uml-vers-code/) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Passer à l'étape suivante : Chapitre 05 — Passage UML vers Code &nbsp; </kbd>](../../cours/05-passage-uml-vers-code/)
+
+</div>
+

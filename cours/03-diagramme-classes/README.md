@@ -124,3 +124,22 @@ Passerelle *-- "1" AfficheurLCD : compose
 1. **Toujours préciser les multiplicités** aux deux extrémités des associations (ex: `1` et `0..*`).
 2. **Encapsulation stricte :** Les attributs doivent toujours être `-` (privés) ou `#` (protégés), jamais `+` (publics).
 3. **Penser polymorphisme :** Dès que plusieurs capteurs ou périphériques partagent des comportements, créer une classe abstraite avec une méthode virtuelle pure (`= 0` en C++).
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Chapitre Suivant |
+| :--- | :---: | ---: |
+| [**Chapitre 02 : Cas d'Utilisation**](../02-diagramme-cas-utilisation-uc/) | [**Sommaire du Dépôt**](../../README.md) | [**Chapitre 04 : Diagramme de Séquence ➔**](../04-diagramme-sequence/) |
+
+<br>
+
+**🚀 Que souhaitez-vous faire ensuite ?**
+
+[<kbd> &nbsp; 🛠️ Mettre en pratique : TP 2 — Passerelle IoT (Classes vers C++/Python) ➔ &nbsp; </kbd>](../../tp-exercices/tp2-classes-passerelle-iot/)
+&nbsp;&nbsp;&nbsp;
+[<kbd> &nbsp; ➡️ Continuer le cours : Chapitre 04 — Diagramme de Séquence ➔ &nbsp; </kbd>](../04-diagramme-sequence/)
+
+</div>
+

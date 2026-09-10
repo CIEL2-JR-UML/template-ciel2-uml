@@ -50,3 +50,18 @@ La norme UML propose de nombreux diagrammes, mais dans la filière **BTS CIEL**,
 | Diagramme de Classes      |  <-- Structure le code source (C++ / Python)
 +---------------------------+
 ```
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite Logique |
+| :--- | :---: | ---: |
+| *Début du parcours* | [**Sommaire du Dépôt**](../../README.md) | [**Chapitre 02 : Cas d'Utilisation (UC) ➔**](../02-diagramme-cas-utilisation-uc/) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Passer au Chapitre 02 : Cas d'Utilisation (UC) &nbsp; </kbd>](../02-diagramme-cas-utilisation-uc/)
+
+</div>
+

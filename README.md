@@ -51,3 +51,14 @@ Ce dépôt constitue le **modèle officiel de cours, travaux pratiques et ressou
 - 📖 [**Mémento UML CIEL (Cheatsheet)**](ressources/cheatsheet-uml-ciel.md) : Synthèse rapide des 3 diagrammes, flèches, cardinalités et règles d'or.
 - 🛠️ [**Tutoriel Rapide PlantUML**](ressources/tuto-plantuml.md) : Guide pas à pas de la syntaxe du code `.puml`.
 - 📐 [**Modèles PlantUML prêts à l'emploi**](ressources/modeles-plantuml/) : Templates commentés pour Use Case, Classes et Séquence.
+
+---
+
+<div align="center">
+
+### 🚀 Prêt à démarrer la formation ?
+
+[<kbd> &nbsp; ➡️ Commencer par le Chapitre 01 : Démarche de Conception UML &nbsp; </kbd>](cours/01-demarche-conception-uml/)
+
+</div>
+

@@ -66,3 +66,18 @@ Si vous ne souhaitez rien installer en local, vous pouvez configurer VS Code pou
 | **Exporter le diagramme en PNG / SVG** | `Ctrl + Shift + P` $\rightarrow$ *PlantUML: Export Current Diagram* |
 | **Aperçu d'un fichier Markdown à côté** | `Ctrl + K` puis `V` |
 | **Ouvrir le terminal intégré** | `Ctrl + \`` |
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite |
+| :--- | :---: | ---: |
+| [**Tutoriel Rapide PlantUML**](tuto-plantuml.md) | [**Sommaire Général**](../README.md) | [**Chapitre 01 : Démarche UML ➔**](../cours/01-demarche-conception-uml/) |
+
+<br>
+
+[<kbd> &nbsp; 🚀 Démarrer la formation : Chapitre 01 — Démarche UML ➔ &nbsp; </kbd>](../cours/01-demarche-conception-uml/)
+
+</div>
+

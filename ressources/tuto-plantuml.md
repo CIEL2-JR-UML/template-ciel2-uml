@@ -106,3 +106,18 @@ deactivate srv
 deactivate ihm
 @enduml
 ```
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite |
+| :--- | :---: | ---: |
+| [**Mémento UML CIEL**](cheatsheet-uml-ciel.md) | [**Sommaire Général**](../README.md) | [**Guide Outillage VS Code ➔**](guide-outillage-vscode.md) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Configurer l'environnement : Guide VS Code &nbsp; </kbd>](guide-outillage-vscode.md)
+
+</div>
+

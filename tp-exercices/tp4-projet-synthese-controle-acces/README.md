@@ -32,3 +32,18 @@ Le système est constitué de :
    - Scénario chronologique complet : présentation du badge, saisie du PIN, requête au serveur, déverrouillage et temporisation de 5s.
 4. **Implémentation logicielle :**
    - Squelette de code orienté objet en C++ ou Python pour la classe `ControleurAcces`.
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite Logique |
+| :--- | :---: | ---: |
+| [**Cours 05 : Passage UML vers Code**](../../cours/05-passage-uml-vers-code/) | [**Sommaire Général**](../../README.md) | [**Mémento UML CIEL ➔**](../../ressources/cheatsheet-uml-ciel.md) |
+
+<br>
+
+[<kbd> &nbsp; 📖 Consulter le Mémento de Révision UML CIEL ➔ &nbsp; </kbd>](../../ressources/cheatsheet-uml-ciel.md)
+
+</div>
+

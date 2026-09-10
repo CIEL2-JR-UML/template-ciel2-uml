@@ -74,3 +74,22 @@ deactivate Ctrl
 - **Nommez précisément les instances :** `nomInstance : NomClasse` (ex: `sondeTemp : Capteur`).
 - **N'oubliez pas les retours :** Les flèches pointillées `-->` matérialisent le résultat renvoyé à l'appelant.
 - **Distinguez synchrone et asynchrone :** Flèche pleine `->` pour un appel de fonction bloquant, flèche ouverte `->>` pour un paquet réseau (UDP/MQTT).
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Chapitre Suivant |
+| :--- | :---: | ---: |
+| [**Chapitre 03 : Diagramme de Classes**](../03-diagramme-classes/) | [**Sommaire du Dépôt**](../../README.md) | [**Chapitre 05 : Passage UML vers Code ➔**](../05-passage-uml-vers-code/) |
+
+<br>
+
+**🚀 Que souhaitez-vous faire ensuite ?**
+
+[<kbd> &nbsp; 🛠️ Mettre en pratique : TP 3 — Supervision & Protocoles MQTT ➔ &nbsp; </kbd>](../../tp-exercices/tp3-sequence-supervision-mqtt/)
+&nbsp;&nbsp;&nbsp;
+[<kbd> &nbsp; ➡️ Continuer le cours : Chapitre 05 — Passage UML vers Code ➔ &nbsp; </kbd>](../05-passage-uml-vers-code/)
+
+</div>
+

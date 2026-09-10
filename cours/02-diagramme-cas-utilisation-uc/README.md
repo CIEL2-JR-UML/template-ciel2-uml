@@ -67,3 +67,22 @@ En BTS CIEL, le diagramme doit impérativement être accompagné de fiches de de
 | **Scénario nominal :** | 1. Le technicien sélectionne le menu « Configuration ».<br>2. Le système demande l'authentification (`<<include>>`).<br>3. Le technicien saisit son code PIN.<br>4. Le système valide le code PIN et affiche les seuils actuels.<br>5. Le technicien saisit le nouveau seuil (ex: 35.0 °C).<br>6. Le système contrôle la cohérence de la saisie (valeur entre -40 et +85 °C).<br>7. Le système enregistre le nouveau seuil en mémoire non-volatile.<br>8. Le système confirme l'enregistrement au technicien. |
 | **Scénarios d'exception :** | **3a. Code PIN invalide :** Le système affiche un message d'erreur et bloque après 3 tentatives.<br>**6a. Valeur hors limites :** Le système invite à saisir une valeur correcte sans modifier l'ancienne. |
 | **Postconditions :** | Le nouveau seuil est actif et persistant après redémarrage. |
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Chapitre Suivant |
+| :--- | :---: | ---: |
+| [**Chapitre 01 : Démarche UML**](../01-demarche-conception-uml/) | [**Sommaire du Dépôt**](../../README.md) | [**Chapitre 03 : Diagramme de Classes ➔**](../03-diagramme-classes/) |
+
+<br>
+
+**🚀 Que souhaitez-vous faire ensuite ?**
+
+[<kbd> &nbsp; 🛠️ Mettre en pratique : TP 1 — Borne IRVE (Cas d'Utilisation) ➔ &nbsp; </kbd>](../../tp-exercices/tp1-cas-utilisation-borne-irve/)
+&nbsp;&nbsp;&nbsp;
+[<kbd> &nbsp; ➡️ Continuer le cours : Chapitre 03 — Diagramme de Classes ➔ &nbsp; </kbd>](../03-diagramme-classes/)
+
+</div>
+

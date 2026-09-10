@@ -146,3 +146,18 @@ class CapteurTemperature(Capteur):
     def acquerir(self) -> float:
         return 22.5
 ```
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite Logique (Grand Projet) |
+| :--- | :---: | ---: |
+| [**Chapitre 04 : Diagramme de Séquence**](../04-diagramme-sequence/) | [**Sommaire du Dépôt**](../../README.md) | [**TP 4 : Projet de Synthèse (RFID) ➔**](../../tp-exercices/tp4-projet-synthese-controle-acces/) |
+
+<br>
+
+[<kbd> &nbsp; 🚀 Passer au Projet de Synthèse : TP 4 — Contrôle d'Accès RFID &nbsp; </kbd>](../../tp-exercices/tp4-projet-synthese-controle-acces/)
+
+</div>
+
