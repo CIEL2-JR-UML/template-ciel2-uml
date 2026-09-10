@@ -24,3 +24,18 @@ Ce document est réservé à l'équipe pédagogique. Il centralise les corrigés
 | **C3 : Modélisation dynamique (Séquence)** | Cohérence chronologique, précision des flèches (sync, async, retours), fragments `alt`/`loop`. | /5 |
 | **C4 : Implémentation & Code** | Traduction rigoureuse des classes en C++ et Python, héritage et collections (`std::vector`). | /5 |
 | **TOTAL** | | **/20** |
+
+---
+
+<div align="center">
+
+| ⬅️ Accueil | 📄 Corrigés Rapides | ➡️ Suite |
+| :---: | :---: | :---: |
+| [**Sommaire Général**](README.md) | [**TP 1**](tp-exercices/tp1-cas-utilisation-borne-irve/CORRIGE_TP1.md) &nbsp;•&nbsp; [**TP 2**](tp-exercices/tp2-classes-passerelle-iot/CORRIGE_TP2.md) &nbsp;•&nbsp; [**TP 3**](tp-exercices/tp3-sequence-supervision-mqtt/CORRIGE_TP3.md) &nbsp;•&nbsp; [**TP 4**](tp-exercices/tp4-projet-synthese-controle-acces/CORRIGE_TP4.md) | [**Mémento UML CIEL**](ressources/cheatsheet-uml-ciel.md) |
+
+<br>
+
+[<kbd> &nbsp; 📝 Consulter le corrigé du TP 1 — Borne IRVE ➔ &nbsp; </kbd>](tp-exercices/tp1-cas-utilisation-borne-irve/CORRIGE_TP1.md)
+
+</div>
+

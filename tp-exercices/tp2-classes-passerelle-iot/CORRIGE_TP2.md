@@ -29,3 +29,18 @@ Les codes sources complets sont disponibles et testés dans :
 - **Diagramme de classes (/3) :** Notations, visibilités `+`/`-` et flèches exactes (`<|--`, `o--`, `*--`).
 - **Implémentation C++ (/4) :** Respect des en-têtes `.hpp` / sources `.cpp`, virtualité et propreté du `Makefile`.
 - **Implémentation Python (/3) :** Décorateurs `@property`, typage optionnel, gestion propre des listes.
+
+---
+
+<div align="center">
+
+| ⬅️ Corrigé Précédent | 🏠 Énoncé TP 2 | ➡️ Corrigé Suivant |
+| :---: | :---: | :---: |
+| [**Corrigé TP 1 (Borne IRVE)**](../tp1-cas-utilisation-borne-irve/CORRIGE_TP1.md) | [**Énoncé Étudiant**](README.md) | [**Corrigé TP 3 (MQTT) ➔**](../tp3-sequence-supervision-mqtt/CORRIGE_TP3.md) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Passer au Corrigé du TP 3 : Supervision MQTT &nbsp; </kbd>](../tp3-sequence-supervision-mqtt/CORRIGE_TP3.md)
+
+</div>
+

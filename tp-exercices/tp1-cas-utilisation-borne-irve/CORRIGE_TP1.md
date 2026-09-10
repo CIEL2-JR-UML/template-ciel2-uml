@@ -44,3 +44,18 @@ Le schéma complet est disponible dans [`borne_irve_corrige.puml`](borne_irve_co
 - **Inclusions (/2) :** `<<include>>` correct vers `S'authentifier` avec le bon sens de flèche.
 - **Extensions (/1) :** `<<extend>>` correct depuis `Recevoir un reçu`.
 - **Fiche textuelle (/3) :** Scénario nominal clair, exceptions identifiées, pré/postconditions.
+
+---
+
+<div align="center">
+
+| ⬅️ Guide Enseignant | 🏠 Énoncé TP 1 | ➡️ Corrigé Suivant |
+| :---: | :---: | :---: |
+| [**Grille Globale /20**](../../CORRECTION.md) | [**Énoncé Étudiant**](README.md) | [**Corrigé TP 2 (Passerelle IoT) ➔**](../tp2-classes-passerelle-iot/CORRIGE_TP2.md) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Passer au Corrigé du TP 2 : Passerelle IoT &nbsp; </kbd>](../tp2-classes-passerelle-iot/CORRIGE_TP2.md)
+
+</div>
+
