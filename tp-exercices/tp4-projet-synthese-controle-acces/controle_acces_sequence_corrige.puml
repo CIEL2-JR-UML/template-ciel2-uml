@@ -1,0 +1,46 @@
+﻿@startuml
+' CORRECTION TP 4 : Diagramme de Séquence - Contrôle d'Accès RFID
+autonumber
+skinparam responseMessageBelowArrow true
+
+actor "Usager" as User
+participant "LecteurRFID" as RFID
+participant "ControleurAcces" as Ctrl
+participant "ClientAuthAPI" as API
+participant "GacheElectrique" as Gache
+participant "Signalisation" as LED
+
+User -> RFID : approcherBadge()
+activate RFID
+
+RFID -> Ctrl : notifierDetection("UID_A1B2")
+activate Ctrl
+deactivate RFID
+
+' Le contrôleur vérifie les droits auprès de l'API :
+Ctrl -> API : validerDroits("UID_A1B2", "1234")
+activate API
+API --> Ctrl : reponse (valide = true)
+deactivate API
+
+alt reponse == true [Accès Autorisé]
+    ' TODO 1.1 RÉSOLU : Déverrouillage pendant 5 secondes
+    Ctrl -> Gache : deverrouiller(5)
+    activate Gache
+    deactivate Gache
+    
+    ' TODO 1.2 RÉSOLU : Bip vert
+    Ctrl -> LED : accesAutorise()
+    activate LED
+    deactivate LED
+
+else reponse == false [Accès Refusé]
+    Ctrl -> LED : accesRefuse()
+    activate LED
+    deactivate LED
+end
+
+Ctrl -> Ctrl : attenteProchainBadge()
+deactivate Ctrl
+
+@enduml

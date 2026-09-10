@@ -1,0 +1,30 @@
+﻿@startuml
+' CORRECTION TP 4 : Cas d'Utilisation - Contrôle d'Accès RFID
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Usager" as User
+actor "Agent de Sécurité" as Secu
+actor "Serveur d'Authentification" as SrvAuth <<Système Externe>>
+
+' TODO 1 RÉSOLU : Héritage entre acteurs
+Secu --|> User
+
+rectangle "Contrôleur d'Accès Sécurisé" {
+    usecase "Présenter badge RFID" as UC_Badge
+    usecase "Saisir code PIN" as UC_PIN
+    usecase "Valider droits d'accès" as UC_Valider
+    usecase "Gérer la base des usagers" as UC_Admin
+}
+
+User --> UC_Badge
+Secu --> UC_Admin
+UC_Valider --> SrvAuth
+
+' TODO 2 RÉSOLU : Inclusion obligatoire
+UC_Badge ..> UC_Valider : <<include>>
+
+' TODO 3 RÉSOLU : Extension optionnelle
+UC_Badge <.. UC_PIN : <<extend>>
+
+@enduml

@@ -1,0 +1,51 @@
+﻿@startuml
+' CORRECTION TP 4 : Diagramme de Classes - Contrôle d'Accès Sécurisé
+skinparam classAttributeIconSize 0
+
+class LecteurRFID {
+    - portSerie : string
+    + LecteurRFID(port: string)
+    + lireUID() : string
+}
+
+class GacheElectrique {
+    - pinGPIO : int
+    + GacheElectrique(gpio: int)
+    + deverrouiller(secondes: int) : void
+}
+
+class Signalisation {
+    - pinLedVerte : int
+    - pinLedRouge : int
+    + Signalisation(verte: int, rouge: int)
+    + accesAutorise() : void
+    + accesRefuse() : void
+}
+
+class ClientAuthAPI {
+    - urlServeur : string
+    + ClientAuthAPI(url: string)
+    + validerDroits(uid: string, pin: string) : bool
+}
+
+class ControleurAcces {
+    - nomZone : string
+    - m_lecteur : LecteurRFID
+    - m_gache : GacheElectrique
+    - m_signal : Signalisation
+    - m_api : ClientAuthAPI*
+    + ControleurAcces(nomZone: string, api: ClientAuthAPI*)
+    + traiterIdentification(uid: string, pin: string) : bool
+}
+
+' Composition forte des composants matériels soudés :
+ControleurAcces *-- "1" LecteurRFID      : integre
+ControleurAcces *-- "1" GacheElectrique  : pilote
+
+' TODO 1 RÉSOLU : Composition forte de la signalisation
+ControleurAcces *-- "1" Signalisation    : integre
+
+' TODO 2 RÉSOLU : Agrégation faible de l'API cliente réseau
+ControleurAcces o-- "1" ClientAuthAPI    : interroge
+
+@enduml
