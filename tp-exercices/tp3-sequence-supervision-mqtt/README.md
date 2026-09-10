@@ -34,16 +34,19 @@ Le système met en scène 4 participants :
 
 ---
 
-## 3. Travail Demandé
+## 3. Travail Demandé (Exercice Guidé à Trous)
 
-1. Complétez le fichier PlantUML [`sequence_mqtt.puml`](sequence_mqtt.puml).
-2. Utilisez les éléments normalisés :
-   - Numérotation automatique (`autonumber`).
-   - Messages synchrones (`->`) et asynchrones (`->>`).
-   - Réponses en pointillés (`-->`).
-   - Barre d'activation (`activate` / `deactivate`).
-   - Fragment conditionnel `alt ... else ... end`.
-3. Visualisez le schéma avec le raccourci **`Alt + D`**.
+Le fichier [`sequence_mqtt.puml`](sequence_mqtt.puml) contient déjà l'architecture générale et la branche critique d'alerte. Vous n'avez que **3 balises `TODO` (environ 4 lignes)** à ajouter :
+
+1. **TODO 1 : Retour de mesure en pointillés (`-->`)**
+   - Écrivez la réponse de la sonde renvoyant sa température au contrôleur (`Sonde --> Ctrl : float (ex: 28.5)`).
+2. **TODO 2 : Message réseau asynchrone QoS 0 (`->>`)**
+   - Dans la branche `else`, complétez l'envoi de la trame vers le broker avec une flèche ouverte sans attente d'accusé (`MQTT ->> Broker : PUBLISH (QoS=0, Topic="telemetrie/temp")`).
+3. **TODO 3 : Mise en veille finale**
+   - Appelez la méthode interne `Ctrl -> Ctrl : miseEnSommeil()` puis désactivez la ligne de vie avec `deactivate Ctrl`.
+
+*(💡 Visualisez instantanément votre schéma dans VS Code avec **`Alt + D`**)*.
+
 
 ---
 

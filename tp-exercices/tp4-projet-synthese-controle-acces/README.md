@@ -20,18 +20,30 @@ Le système est constitué de :
 
 ---
 
-## 3. Livrables Attendus (Le Trio Fondamental)
+## 3. Travail Demandé (Exercice Guidé à Trous)
 
-1. **Diagramme des Cas d'Utilisation :**
-   - Acteurs (`Usager`, `Agent de sécurité`, `Serveur Authentification`).
-   - Cas d'utilisation et dépendances (`<<include>>` pour la validation d'accès, `<<extend>>` pour la saisie du code PIN).
-2. **Diagramme de Classes :**
-   - Architecture orientée objet du firmware (`LecteurRFID`, `ClavierCode`, `GacheElectrique`, `Signalisation`, `ClientAuthAPI`, `ControleurAcces`).
-   - Multiplicités, composition et agrégation.
-3. **Diagramme de Séquence :**
-   - Scénario chronologique complet : présentation du badge, saisie du PIN, requête au serveur, déverrouillage et temporisation de 5s.
-4. **Implémentation logicielle :**
-   - Squelette de code orienté objet en C++ ou Python pour la classe `ControleurAcces`.
+Tous les fichiers de base sont fournis et pré-remplis à 80%. Suivez les balises `TODO` dans chaque fichier :
+
+### Étape 1 : Cas d'Utilisation — [`controle_acces_uc.puml`](controle_acces_uc.puml)
+*(Visualisez avec **`Alt + D`**)*
+- **TODO 1 :** Ajouter l'héritage entre acteurs : `Secu --|> User`.
+- **TODO 2 :** Ajouter l'inclusion obligatoire : `UC_Badge ..> UC_Valider : <<include>>`.
+- **TODO 3 :** Ajouter l'extension optionnelle : `UC_Badge <.. UC_PIN : <<extend>>`.
+
+### Étape 2 : Diagramme de Classes — [`controle_acces_classes.puml`](controle_acces_classes.puml)
+*(Visualisez avec **`Alt + D`**)*
+- **TODO 1 :** Déclarer la composition forte de la signalisation : `ControleurAcces *-- "1" Signalisation`.
+- **TODO 2 :** Déclarer l'agrégation faible du service réseau : `ControleurAcces o-- "1" ClientAuthAPI`.
+
+### Étape 3 : Diagramme de Séquence — [`controle_acces_sequence.puml`](controle_acces_sequence.puml)
+*(Visualisez avec **`Alt + D`**)*
+- **TODO 1.1 :** Dans la branche `alt` d'accès autorisé, appeler `Ctrl -> Gache : deverrouiller(5)`.
+- **TODO 1.2 :** Déclencher le signal vert `Ctrl -> LED : accesAutorise()`.
+
+### Étape 4 : Implémentation Python — [`controleur_acces.py`](controleur_acces.py)
+- Ouvrez le script [`controleur_acces.py`](controleur_acces.py) et complétez la méthode `traiter_identification` (6 lignes simples indiquées dans le commentaire `TODO`).
+- Lancez le script dans votre terminal : `python controleur_acces.py` pour valider les tests !
+
 
 ---
 

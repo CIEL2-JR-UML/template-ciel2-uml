@@ -27,16 +27,23 @@ Dans ce TP, vous allez modéliser puis implémenter l'architecture logicielle d'
 
 ---
 
-## 3. Travail Demandé
+---
 
-1. **Diagramme de classes UML :**
-   - Réalisez le diagramme de classes complet sous forme de fichier PlantUML `passerelle.puml` *(Visualisez avec **`Alt + D`**)*.
-2. **Implémentation :**
-   - Le code squelette est fourni en **C++** (dossier `cpp/`) et en **Python** (dossier `python/`).
-   - Complétez les méthodes d'acquisition et de gestion de la collection.
-3. **Validation :**
-   - En C++ : compilez avec `make` et exécutez le binaire `./passerelle_iot`.
-   - En Python : lancez `python main.py`.
+## 3. Travail Demandé (Exercice Guidé à Trous)
+
+Les fichiers de départ sont déjà pré-remplis à 80% ! Vous avez uniquement quelques lignes ciblées à compléter.
+
+### Étape 1 : Compléter le diagramme de classes [`passerelle.puml`](passerelle.puml)
+Ouvrez [`passerelle.puml`](passerelle.puml) *(prévisualisation avec **`Alt + D`**)* et complétez les balises `TODO` :
+- **TODO 1 :** Renseigner l'attribut de `CapteurTemperature` (`- m_unite : string`) et de `CapteurHumidite` (`- m_pourcentageRelatif : bool`).
+- **TODO 2 :** Déclarer les 2 relations d'héritage `<|--` vers la classe mère `Capteur`.
+- **TODO 3 :** Déclarer l'agrégation faible `o--` entre `Passerelle` et `Capteur` (cardinalité `"0..*"`).
+- **TODO 4 :** Déclarer la composition forte `*--` entre `Passerelle` et `AfficheurLCD` (cardinalité `"1"`).
+
+### Étape 2 : Compléter le code (C++ ou Python au choix)
+- **En C++ :** Ouvrez [`cpp/Passerelle.cpp`](cpp/Passerelle.cpp) et complétez `TODO 1` (`m_capteurs.push_back`) et `TODO 2` (boucle d'acquisition). Compilez avec `make` et testez avec `./passerelle_iot`.
+- **En Python :** Ouvrez [`python/passerelle.py`](python/passerelle.py) et complétez `TODO 1` (`self._capteurs.append`) et `TODO 2` (boucle d'acquisition). Testez avec `python main.py`.
+
 
 ---
 

@@ -1,28 +1,46 @@
-@startuml
+﻿@startuml
+' TP 4 : Cas d'Utilisation - Contrôle d'Accès RFID
 left to right direction
 skinparam packageStyle rectangle
-skinparam actorStyle awesome
 
 actor "Usager" as User
-actor "Agent de sécurité" as Guard
-actor "Serveur d'Authentification" as SrvAuth <<Serveur Central>>
+actor "Agent de Sécurité" as Secu
+actor "Serveur d'Authentification" as SrvAuth <<Système Externe>>
 
-Guard --|> User
-
-rectangle "Système de Contrôle d'Accès RFID" {
-    usecase "Franchir la porte par badge" as UC_Badge
-    usecase "Saisir code PIN complémentaire" as UC_PIN
-    usecase "Consulter l'historique des accès" as UC_Logs
-    usecase "Déverrouiller en urgence" as UC_Urgence
-    usecase "Gérer les autorisations" as UC_Admin
+rectangle "Contrôleur d'Accès Sécurisé" {
+    usecase "Présenter badge RFID" as UC_Badge
+    usecase "Saisir code PIN" as UC_PIN
+    usecase "Valider droits d'accès" as UC_Valider
+    usecase "Gérer la base des usagers" as UC_Admin
 }
 
+' Liaisons de base déjà fournies :
 User --> UC_Badge
-Guard --> UC_Logs
-Guard --> UC_Urgence
-Guard --> UC_Admin
+Secu --> UC_Admin
+UC_Valider --> SrvAuth
 
-UC_Badge .> UC_PIN : <<extend>> (Si salle sensible)
-UC_Badge --> SrvAuth : Valider UID badge & PIN
-UC_Admin --> SrvAuth : Mettre à jour droits
+' ==============================================================================
+' TODO 1 : Héritage entre Acteurs
+' L'Agent de Sécurité est un Usager disposant de fonctions administratives.
+' Syntaxe : Secu --|> User
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ LA RELATION D'HÉRITAGE ICI]
+
+
+' ==============================================================================
+' TODO 2 : Dépendance obligatoire <<include>>
+' Présenter un badge implique TOUJOURS de valider les droits d'accès.
+' Syntaxe : UC_Badge ..> UC_Valider : <<include>>
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ L'INCLUSION ICI]
+
+
+' ==============================================================================
+' TODO 3 : Dépendance optionnelle <<extend>>
+' En zone sensible, la saisie du code PIN prolonge la lecture du badge.
+' Syntaxe : UC_Badge <.. UC_PIN : <<extend>>
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ L'EXTENSION ICI]
+
+
 @enduml

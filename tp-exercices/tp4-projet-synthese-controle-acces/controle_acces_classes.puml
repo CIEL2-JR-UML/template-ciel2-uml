@@ -1,56 +1,58 @@
-@startuml
+﻿@startuml
+' TP 4 : Diagramme de Classes - Contrôle d'Accès Sécurisé
 skinparam classAttributeIconSize 0
 
 class LecteurRFID {
-    - m_busSPI : int
-    + LecteurRFID(bus: int)
+    - portSerie : string
+    + LecteurRFID(port: string)
     + lireUID() : string
 }
 
-class ClavierCode {
-    - m_nbTouches : int
-    + ClavierCode()
-    + saisirCode(nbChiffres: int) : string
-}
-
-class GacheElectromagnetique {
-    - m_pinRelais : int
-    - m_estOuvert : bool
-    + GacheElectromagnetique(pin: int)
-    + deverrouiller() : void
-    + verrouiller() : void
-    + estOuverte() : bool
+class GacheElectrique {
+    - pinGPIO : int
+    + GacheElectrique(gpio: int)
+    + deverrouiller(secondes: int) : void
 }
 
 class Signalisation {
-    - m_pinLEDVerte : int
-    - m_pinLEDRouge : int
-    - m_pinBuzzer : int
-    + Signalisation(pinV: int, pinR: int, pinB: int)
-    + autoriserAcces() : void
-    + refuserAcces() : void
-    + alarmePorteBloquee() : void
+    - pinLedVerte : int
+    - pinLedRouge : int
+    + Signalisation(verte: int, rouge: int)
+    + accesAutorise() : void
+    + accesRefuse() : void
 }
 
 class ClientAuthAPI {
-    - m_urlServeur : string
-    - m_cleAPI : string
-    + ClientAuthAPI(url: string, key: string)
-    + verifierDroits(uid: string, pin: string) : bool
-    + journaliserAcces(uid: string, succes: bool) : void
+    - urlServeur : string
+    + ClientAuthAPI(url: string)
+    + validerDroits(uid: string, pin: string) : bool
 }
 
 class ControleurAcces {
-    - m_idPorte : string
-    - m_requiertPIN : bool
-    + ControleurAcces(idPorte: string, requiertPIN: bool)
-    + traiterPresenceBadge() : void
-    + surveillerCapteurPorte() : void
+    - nomZone : string
+    + ControleurAcces(nomZone: string, api: ClientAuthAPI*)
+    + traiterIdentification(uid: string, pin: string) : bool
 }
 
-ControleurAcces *-- "1" LecteurRFID
-ControleurAcces *-- "1" ClavierCode
-ControleurAcces *-- "1" GacheElectromagnetique
-ControleurAcces *-- "1" Signalisation
-ControleurAcces o-- "1" ClientAuthAPI
+' Relations déjà fournies (Composition forte des composants matériels soudés) :
+ControleurAcces *-- "1" LecteurRFID      : integre
+ControleurAcces *-- "1" GacheElectrique  : pilote
+
+' ==============================================================================
+' TODO 1 : Composition forte (*--)
+' Le contrôleur intègre en composition forte l'objet Signalisation (cardinalité 1)
+' Syntaxe : ControleurAcces *-- "1" Signalisation : integre
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ LA COMPOSITION ICI]
+
+
+' ==============================================================================
+' TODO 2 : Agrégation faible (o--)
+' Le contrôleur référence le service ClientAuthAPI par pointeur/référence (cardinalité 1)
+' (Le serveur API existe indépendamment du contrôleur local)
+' Syntaxe : ControleurAcces o-- "1" ClientAuthAPI : interroge
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ L'AGRÉGATION ICI]
+
+
 @enduml

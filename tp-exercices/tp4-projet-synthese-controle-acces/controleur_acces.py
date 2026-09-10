@@ -1,67 +1,88 @@
-# -*- coding: utf-8 -*-
-"""
-Prototype Python complet du système de Contrôle d'Accès Sécurisé (TP 4 BTS CIEL).
-"""
-import time
+﻿# TP 4 : Implémentation Logicielle Orientée Objet (Python 3)
+# Contrôle d'Accès Sécurisé par Badge RFID
+
+class LecteurRFID:
+    def __init__(self, port: str = "/dev/ttyUSB0"):
+        self.port = port
+
+    def lire_uid(self) -> str:
+        return "UID_A1B2"
 
 class GacheElectrique:
-    def __init__(self):
-        self._verrouillee = True
+    def __init__(self, pin_gpio: int = 18):
+        self.pin_gpio = pin_gpio
+        self.est_ouverte = False
 
-    def deverrouiller(self):
-        self._verrouillee = False
-        print("  [GÂCHE] >> Pêne déverrouillé (Passage autorisé pendant 5s)")
-
-    def verrouiller(self):
-        self._verrouillee = True
-        print("  [GÂCHE] >> Pêne ré-enclenché (Porte verrouillée)")
+    def deverrouiller(self, secondes: int = 5) -> None:
+        self.est_ouverte = True
+        print(f"[ACTION MATÉRIELLE] Gâche déverrouillée pendant {secondes} secondes (Porte ouverte)")
 
 class Signalisation:
-    def acces_autorise(self):
-        print("  [SIGNAL] LED Verte ALLUMÉE + 1 Bip Court (Bip!)")
+    def __init__(self, led_verte: int = 23, led_rouge: int = 24):
+        self.led_verte = led_verte
+        self.led_rouge = led_rouge
 
-    def acces_refuse(self):
-        print("  [SIGNAL] LED Rouge CLIGNOTANTE + 1 Bip Long (Biiiiip!)")
+    def acces_autorise(self) -> None:
+        print("[SIGNALISATION] LED VERTE allumée (Bip court : Accès Accordé)")
 
-class ServiceAuthentification:
-    def __init__(self):
-        # Base de données d'utilisateurs simulée
-        self.utilisateurs = {
-            "A1-B2-C3-D4": {"nom": "Professeur CIEL", "pin": "1234", "salle_serveur": True},
-            "99-88-77-66": {"nom": "Étudiant 1", "pin": "", "salle_serveur": False}
+    def acces_refuse(self) -> None:
+        print("[SIGNALISATION] LED ROUGE clignotante (Bips répétés : Accès Refusé)")
+
+class ClientAuthAPI:
+    def __init__(self, url_serveur: str = "https://auth.ciel.lan/api"):
+        self.url_serveur = url_serveur
+        # Base d'utilisateurs simulée
+        self._utilisateurs = {
+            "UID_A1B2": "1234", # Usager autorisé
+            "UID_C3D4": "9999", # Usager autorisé
         }
 
-    def verifier_acces(self, uid: str, pin: str = "") -> bool:
-        user = self.utilisateurs.get(uid)
-        if not user:
-            return False
-        if user["salle_serveur"]:
-            return user["pin"] == pin
-        return True
+    def valider_droits(self, uid: str, pin: str) -> bool:
+        return self._utilisateurs.get(uid) == pin
 
 class ControleurAcces:
-    def __init__(self, id_porte: str, requiert_pin: bool = False):
-        self.id_porte = id_porte
-        self.requiert_pin = requiert_pin
-        self.gache = GacheElectrique()
-        self.signal = Signalisation()
-        self.auth_srv = ServiceAuthentification()
+    def __init__(self, nom_zone: str, api: ClientAuthAPI):
+        self.nom_zone = nom_zone
+        
+        # Composition : objets matériels internes créés par le contrôleur
+        self._lecteur = LecteurRFID()
+        self._gache = GacheElectrique()
+        self._signal = Signalisation()
+        
+        # Agrégation : service réseau passé en paramètre
+        self._api = api
 
-    def badge_presente(self, uid: str, pin_saisi: str = ""):
-        print(f"\n[PORTAL {self.id_porte}] Badge détecté : UID = {uid}")
-        if self.auth_srv.verifier_acces(uid, pin_saisi):
-            print("  [AUTH] Accès ACCORDÉ")
-            self.signal.acces_autorise()
-            self.gache.deverrouiller()
-            time.sleep(1) # Simulation temporisation
-            self.gache.verrouiller()
-        else:
-            print("  [AUTH] Accès REFUSÉ (Badge invalide ou mauvais PIN)")
-            self.signal.acces_refuse()
+    def traiter_identification(self, uid: str, pin: str) -> bool:
+        print(f"\n--- Traitement badge {uid} sur zone '{self.nom_zone}' ---")
+        
+        # ==============================================================================
+        # TODO : Logique de Contrôle d'Accès
+        # 1. Interrogez l'API : self._api.valider_droits(uid, pin)
+        # 2. Si valide :
+        #    - Déverrouillez la porte : self._gache.deverrouiller(5)
+        #    - Déclenchez la signalisation d'autorisation : self._signal.acces_autorise()
+        #    - Renvoyez True
+        # 3. Si invalide :
+        #    - Déclenchez la signalisation de refus : self._signal.acces_refuse()
+        #    - Renvoyez False
+        # ==============================================================================
+        
+        # [ÉCRIVEZ VOTRE CODE CI-DESSOUS]
+        return False
 
+# ==============================================================================
+# Programme de test
+# ==============================================================================
 if __name__ == "__main__":
-    controleur_labo = ControleurAcces("SALLE-INFORMATIQUE-CIEL", requiert_pin=True)
-    # Test 1 : Badge autorisé avec bon PIN
-    controleur_labo.badge_presente("A1-B2-C3-D4", "1234")
+    print("=== TEST CONTRÔLE D'ACCÈS RFID (BTS CIEL) ===")
+    
+    api_centrale = ClientAuthAPI()
+    controleur = ControleurAcces("Salle Serveurs Baie 1", api_centrale)
+
+    # Test 1 : Badge valide avec bon code
+    print("\n[TEST 1] Tentative avec badge valide ('UID_A1B2') et code PIN '1234' :")
+    controleur.traiter_identification("UID_A1B2", "1234")
+
     # Test 2 : Badge inconnu
-    controleur_labo.badge_presente("00-11-22-33")
+    print("\n[TEST 2] Tentative avec badge inconnu ('UID_INCONNU') :")
+    controleur.traiter_identification("UID_INCONNU", "0000")

@@ -18,8 +18,43 @@ rectangle "Borne de Recharge IRVE" {
     usecase "Arrêter la borne à distance" as UC_Urgence
 }
 
-' À compléter par l'étudiant :
-' 1. Relier les acteurs aux cas d'utilisation
-' 2. Ajouter les dépendances <<include>> et <<extend>>
-' 3. Ajouter l'héritage entre acteurs
+' ==============================================================================
+' LIAISONS EXISTANTES DÉJÀ FOURNIES :
+' ==============================================================================
+User --> UC_Charge
+User --> UC_Stop
+User --> UC_Mesures
+
+Tech --> UC_Diag
+Tech --> UC_Update
+
+Cloud --> UC_Urgence
+
+' ==============================================================================
+' TODO 1 : Généralisation (Héritage) entre Acteurs
+' Le Technicien est un Conducteur avec des privilèges supplémentaires.
+' Syntaxe d'héritage : ActeurFils --|> ActeurParent
+' ------------------------------------------------------------------------------
+' Écrivez ci-dessous la relation d'héritage entre Tech et User :
+
+
+' ==============================================================================
+' TODO 2 : Dépendance obligatoire <<include>>
+' Pour "Démarrer une session de charge" (UC_Charge), l'usager doit TOUJOURS
+' obligatoirement "S'authentifier par badge RFID" (UC_Auth).
+' Syntaxe : CasSource ..> CasObligatoire : <<include>>
+' ------------------------------------------------------------------------------
+' Écrivez ci-dessous l'inclusion entre UC_Charge et UC_Auth :
+
+
+' ==============================================================================
+' TODO 3 : Dépendance optionnelle <<extend>>
+' Après avoir chargé (UC_Charge), le système propose l'option facultative
+' "Recevoir un reçu par email" (UC_Recu).
+' Syntaxe : CasBase <.. CasOptionnel : <<extend>>
+' ------------------------------------------------------------------------------
+' Écrivez ci-dessous l'extension entre UC_Charge et UC_Recu :
+
+
 @enduml
+

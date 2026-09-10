@@ -9,10 +9,63 @@ participant "CapteurTemp" as Sonde
 participant "ClientMQTT" as MQTT
 boundary "Broker Distant" as Broker
 
-' À compléter par l'étudiant :
-' 1. Événement tick10s
-' 2. Appel acquisition température et retour
-' 3. Fragment alt pour l'évaluation du seuil (Cas alerte QoS 1 vs Cas standard QoS 0)
-' 4. Mise en sommeil
+' ==============================================================================
+' 1. DÉBUT DU CYCLE D'ACQUISITION (DÉJÀ FOURNI)
+' ==============================================================================
+Timer -> Ctrl : signalTick10s()
+activate Ctrl
+
+Ctrl -> Sonde : acquerir()
+activate Sonde
+
+' ==============================================================================
+' TODO 1 : Réponse du capteur (Message de retour en pointillés)
+' La Sonde renvoie la valeur de température mesurée au contrôleur.
+' Syntaxe : Emetteur --> Destinataire : valeur
+' Indice : Sonde --> Ctrl : float (ex: 28.5)
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ LA LIGNE DE RETOUR CI-DESSOUS]
+
+deactivate Sonde
+
+Ctrl -> Ctrl : verifierSeuil(temp)
+
+' ==============================================================================
+' 2. FRAGMENT CONDITIONNEL (ALT / ELSE)
+' ==============================================================================
+alt temp >= 30.0 [Cas Alerte : QoS 1 avec Accusé de Réception]
+    ' Branche Alerte déjà fournie :
+    Ctrl -> MQTT : publierAlerte("alerte/temp", "CRITIQUE")
+    activate MQTT
+    MQTT ->> Broker : MQTT PUBLISH (QoS=1, Topic="alerte/temp")
+    activate Broker
+    Broker -->> MQTT : MQTT PUBACK
+    deactivate Broker
+    MQTT --> Ctrl : StatutEnvoi (OK)
+    deactivate MQTT
+
+else temp < 30.0 [Cas Nominal : TODO 2 - Télémétrie standard QoS 0]
+    ' ==============================================================================
+    ' TODO 2 : Message asynchrone sans attente d'accusé de réception
+    ' Le client MQTT envoie le message directement au broker avec flèche ouverte (->>)
+    ' Syntaxe : MQTT ->> Broker : PUBLISH (QoS=0, Topic="telemetrie/temp")
+    ' ------------------------------------------------------------------------------
+    Ctrl -> MQTT : publierMesure("telemetrie/temp", temp)
+    activate MQTT
+    ' [ÉCRIVEZ CI-DESSOUS L'ENVOI DU PAQUET VERS LE BROKER (->>)]
+    
+    deactivate MQTT
+end
+
+' ==============================================================================
+' TODO 3 : Fin de cycle et mise en veille du microcontrôleur
+' Appelez la méthode interne "miseEnSommeil()" sur Ctrl, puis désactivez sa ligne de vie.
+' Indice :
+' Ctrl -> Ctrl : miseEnSommeil()
+' deactivate Ctrl
+' ------------------------------------------------------------------------------
+' [ÉCRIVEZ LES 2 LIGNES CI-DESSOUS]
+
 
 @enduml
+

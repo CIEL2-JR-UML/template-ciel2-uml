@@ -16,12 +16,24 @@ class Passerelle:
         self._afficheur = AfficheurLCD()    # Composition
 
     def connecter_capteur(self, capteur: Capteur) -> None:
-        if capteur is not None:
-            self._capteurs.append(capteur)
+        # ==============================================================================
+        # TODO 1 : Gestion de l'agrégation
+        # Ajoutez l'objet 'capteur' à la liste 'self._capteurs' si le capteur existe.
+        # Indice : if capteur is not None: self._capteurs.append(capteur)
+        # ==============================================================================
+        pass
 
     def executer_cycle_mesure(self) -> None:
         print(f">> Lancement du cycle sur {self._nom} ({self._ip})")
-        for c in self._capteurs:
-            if c.acquerir():
-                print(f"   -> [{c.label}] Valeur = {c.valeur}")
+        # ==============================================================================
+        # TODO 2 : Parcours polymorphique de la collection
+        # Parcourez 'self._capteurs'. Pour chaque capteur 'c', appelez c.acquerir()
+        # et affichez 'c.label' et 'c.valeur'.
+        # Indice :
+        # for c in self._capteurs:
+        #     if c.acquerir():
+        #         print(f"   -> [{c.label}] Valeur = {c.valeur}")
+        # ==============================================================================
+
         self._afficheur.afficher(self._nom, f"Capteurs: {len(self._capteurs)} OK")
+
