@@ -30,7 +30,7 @@ Dans ce TP, vous allez modéliser puis implémenter l'architecture logicielle d'
 ## 3. Travail Demandé
 
 1. **Diagramme de classes UML :**
-   - Réalisez le diagramme de classes complet sous forme de fichier PlantUML `passerelle.puml`.
+   - Réalisez le diagramme de classes complet sous forme de fichier PlantUML `passerelle.puml` *(Visualisez avec **`Alt + D`**)*.
 2. **Implémentation :**
    - Le code squelette est fourni en **C++** (dossier `cpp/`) et en **Python** (dossier `python/`).
    - Complétez les méthodes d'acquisition et de gestion de la collection.
