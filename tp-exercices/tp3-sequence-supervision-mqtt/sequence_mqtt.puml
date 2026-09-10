@@ -1,0 +1,18 @@
+@startuml
+' TP 3 : Diagramme de Séquence MQTT - BTS CIEL
+autonumber
+skinparam responseMessageBelowArrow true
+
+actor "Horloge Interne" as Timer
+participant "ControleurPrincipal" as Ctrl
+participant "CapteurTemp" as Sonde
+participant "ClientMQTT" as MQTT
+boundary "Broker Distant" as Broker
+
+' À compléter par l'étudiant :
+' 1. Événement tick10s
+' 2. Appel acquisition température et retour
+' 3. Fragment alt pour l'évaluation du seuil (Cas alerte QoS 1 vs Cas standard QoS 0)
+' 4. Mise en sommeil
+
+@enduml
