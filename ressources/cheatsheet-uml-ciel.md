@@ -58,3 +58,18 @@ Ce mémento rassemble les règles indispensables pour maîtriser les **3 diagram
 - `alt ... else ... end` : Alternative conditionnelle (`if ... else`).
 - `opt ... end` : Traitement optionnel (`if` sans `else`).
 - `loop ... end` : Répétition (`for`, `while`).
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite |
+| :--- | :---: | ---: |
+| [**TP 4 : Projet de Synthèse**](../tp-exercices/tp4-projet-synthese-controle-acces/) | [**Sommaire Général**](../README.md) | [**Tutoriel Rapide PlantUML ➔**](tuto-plantuml.md) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Consulter le Tutoriel Rapide PlantUML &nbsp; </kbd>](tuto-plantuml.md)
+
+</div>
+

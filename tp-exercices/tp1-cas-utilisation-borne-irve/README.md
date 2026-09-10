@@ -47,3 +47,18 @@ La borne est équipée :
    - Intégrez correctement les relations `<<include>>` (ex: authentification) et `<<extend>>` (ex: envoi de reçu).
 3. **Fiche descriptive textuelle :**
    - Rédigez dans un fichier `compte_rendu.md` la fiche détaillée du cas d'utilisation **« Démarrer une session de recharge »** (préconditions, scénario nominal en 6 à 8 étapes, scénarios d'exceptions, postconditions).
+
+---
+
+<div align="center">
+
+| ⬅️ Précédent | 🏠 Accueil | ➡️ Suite Logique |
+| :--- | :---: | ---: |
+| [**Cours 02 : Cas d'Utilisation**](../../cours/02-diagramme-cas-utilisation-uc/) | [**Sommaire des TP**](../README.md) | [**Chapitre 03 : Diagramme de Classes ➔**](../../cours/03-diagramme-classes/) |
+
+<br>
+
+[<kbd> &nbsp; ➡️ Passer à l'étape suivante : Chapitre 03 — Diagramme de Classes &nbsp; </kbd>](../../cours/03-diagramme-classes/)
+
+</div>
+
